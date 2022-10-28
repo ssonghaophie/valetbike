@@ -1,7 +1,9 @@
 # ValetBike
 
 Smith College CSC223: Software Engineering\
-Starter App for ValetBike project
+Starter App for ValetBike project\
+Team: Green Dolphin Paradise\
+Team Members: Sophie Song
 
 ## Environment Configuration
 
