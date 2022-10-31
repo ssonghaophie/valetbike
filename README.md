@@ -3,7 +3,7 @@
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project\
 Team: Green Dolphin Paradise\
-Team Members: Sophie Song, Xinran Bi
+Team Members: Sophie Song, Xinran Bi, Evelyn Gao
 
 ## Environment Configuration
 
