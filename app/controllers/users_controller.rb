@@ -63,6 +63,10 @@ class UsersController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def home
+    redirect_to root_path
+  end
+
 
     
   private
@@ -74,4 +78,6 @@ class UsersController < ApplicationController
     params.require(:first_name, :last_name, :password, :email)
           .permit(:username);
   end
+
+
 end
