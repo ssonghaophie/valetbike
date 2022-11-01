@@ -4,10 +4,6 @@ class UsersController < ApplicationController
     @users = User.all.order(identifier: :asc)
   end
 
-  # The show action calls Bike.find 
-  #  with the ID captured by the  parameter. 
-  # The returned bike is stored in the @bikes 
-  # instance variable, so it is accessible by the view. 
   def show
     @user = User.find(params[:username])
   end
@@ -27,6 +23,17 @@ class UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def create
+    @user = User.find_bu(username: params[:username])
+    if !!@user && @user.authenticate(params[:password])
+        session[:username] = @username
+        redirect_to root
+    else
+      message ="nooo"
+      redirect_to login_path, notice: message 
+    end 
   end
 
   # The edit action fetches the article from the database,
@@ -61,10 +68,6 @@ class UsersController < ApplicationController
     @user = Users.find(params[:username])
     @user.destroy
     redirect_to root_path, status: :see_other
-  end
-
-  def home
-    redirect_to root_path
   end
 
 

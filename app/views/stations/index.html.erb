@@ -4,9 +4,11 @@
       Welcome to our website : <em> ValetBike </em>!
     </div>  
     <div>
-      <%= link_to('Home', { action: 'index'} ) %><br />
-      <%= link_to('About', { action: 'about'} ) %><br />
-       <%= link_to('Signup', users_path ) %><br />
+      <ul class = "navbar"
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li> <%= link_to('Signup', users_path ) %></li>
+      </ul>
     </div>
 
     <div>
@@ -93,3 +95,4 @@
     </div>
 	</div>
 </div>
+
