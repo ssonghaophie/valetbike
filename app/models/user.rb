@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
     validates_uniqueness_of  :username
 
-    has_many :trips, :comments, :payments
+    has_many :trips
+    has_many :comments
+    has_many :payments
 
 end

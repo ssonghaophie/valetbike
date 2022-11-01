@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect to @user
     else
-      render :new, status: : unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -63,8 +63,8 @@ class UsersController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def
 
+    
   private
   def payment
     params.require(:card_no, :cvv, :expire_time, :zip_code);
