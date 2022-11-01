@@ -3,6 +3,10 @@
     <div class="section-title">
       Welcome to ValetBike!
     </div>  
+    <div>
+      <%= link_to('Home', { action: 'index'} ) %><br />
+      <%= link_to('About', { action: 'about'} ) %><br />
+    <div>
     <div class="flexbox vertical stretch">
       <% if @stations.present? %>
         <%= render(partial: "stations/row", collection: @stations, as: :station) %>
