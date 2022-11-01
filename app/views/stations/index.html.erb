@@ -18,6 +18,31 @@
       <div class="empty">
         No bikes found.
       </div>
+      
+
+      <div id="container">
+        <div id = "map">map</div>
+      </div>
+
+      
+      <script>
+       
+
+        function initMap(position){
+          let mapOptions = {
+            // center: {lat: lat,lng: lng},
+            center: {lat: 41.881832,lng:-87.623177},
+            zoom: 12
+          }
+
+          let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        }
+
+      </script>
+      
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmQ9jBUgZiQkW75d5wN72Qurl3bRjD6Eg&callback=initMap"></script>
+
       <% end %>
 
     </div>
