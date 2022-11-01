@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def signup
     @user = User.new(first_name:"...",
                     last_name:"...",
                     username:"...",

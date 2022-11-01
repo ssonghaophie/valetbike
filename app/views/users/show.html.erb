@@ -1,0 +1,27 @@
+
+<h2>Profile</h2>
+
+<p>
+    <strong>first name:</strong>
+    <%= @user.first_name %>
+</p>
+
+<p>
+    <strong>last name:</strong>
+    <%= @user.last_name %>
+</p>
+
+<p>
+    <strong> email Address: </strong>
+    <%= @user.email %>
+</p>
+
+
+<ul>
+  <li><%= link_to "Show", user_path(@user) %></li>
+  <li><%= link_to "Edit", edit_user_path(@user) %></li>
+  <li><%= link_to "Destroy", user_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
