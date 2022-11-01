@@ -3,7 +3,7 @@
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project\
 Team: Green Dolphin Paradise\
-Team Members: Sophie Song, Xinran Bi
+Team Members: Sophie Song, Xinran Bi, Evelyn Gao
 
 ## Environment Configuration
 
@@ -53,7 +53,7 @@ MYSQL_SOCKET=/var/run/mysqld/mysqld.sock  # For Windows
 ### 5. Prepare the database in MySQL
 
 - Use rails to create both the development and test databases with:\
-  `rake db:create`
+  `c`
 - Or use mysql to just create the development databse with:\
   `mysql -u root -p`\
   `CREATE DATABASE valetbike_development;`\
