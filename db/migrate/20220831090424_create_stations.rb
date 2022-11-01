@@ -4,7 +4,8 @@ class CreateStations < ActiveRecord::Migration[7.0]
       t.integer :identifier
       t.string :name
       t.string :address
-
+      t.integer :docked_bike_count
+      
       t.timestamps
     end
   end
