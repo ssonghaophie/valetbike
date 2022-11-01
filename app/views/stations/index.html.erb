@@ -7,30 +7,11 @@
       <%= link_to('Home', { action: 'index'} ) %><br />
       <%= link_to('About', { action: 'about'} ) %><br />
        <%= link_to('Signup', users_path ) %><br />
+    </div>
+
     <div>
-    <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
-      
-       <% if @bikes.present? %>
-        <%= render(partial: "stations/bikerows", collection: @bikes, as: :bike) %>
-      <% else %>
-      <div class="empty">
-        No bikes found.
-      </div>
-      
-
-      <div id="container">
-        <div id = "map">map</div>
-      </div>
-
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmQ9jBUgZiQkW75d5wN72Qurl3bRjD6Eg&callback=initMap"></script>
-      
+     
       <script type="text/javascript">
 
         function getMyLocation(){
@@ -83,11 +64,32 @@
         }
 
       </script>
+      <div id="container">
+        <div id = "map">map</div>
+      </div>
+
+    </div>
+
+    <div class="flexbox vertical stretch">
+      <% if @stations.present? %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+      <% else %>
+      <div class="empty">
+        No stations found.
+      </div>
+      <% end %>
       
+       <% if @bikes.present? %>
+        <%= render(partial: "stations/bikerows", collection: @bikes, as: :bike) %>
+      <% else %>
+      <div class="empty">
+        No bikes found.
+      </div>
 
 
       <% end %>
 
+    
     </div>
 	</div>
 </div>
