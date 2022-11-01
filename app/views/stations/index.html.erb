@@ -4,9 +4,10 @@
       Welcome to our website : <em> ValetBike </em>!
     </div>  
     <div>
-      <ul class = "navbar"
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
+      <ul class = "navbar">
+        <li><a href="/"><b> Home </b></a></li>
+        <a href="#Services"> <b>Services</b> </a>
+        <li><a href="/about"> <b>About </b> </a></li>
         <li> <%= link_to('Signup', users_path ) %></li>
       </ul>
     </div>
@@ -71,6 +72,12 @@
       </div>
 
     </div>
+
+    <div>
+      <a id="Services"> <b>Services </b> </a>
+      <p>We provide share bike rides!</p>
+    </div>
+
 
     <div class="flexbox vertical stretch">
       <% if @stations.present? %>
