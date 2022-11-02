@@ -19,10 +19,11 @@ class UsersController < ApplicationController
                     password:"...", 
                     email:"...")
     if @user.save
-      redirect to @user
-    else
-      render :new, status: :unprocessable_entity
+      redirect_to @user
+    # else
+    #   render :new, status: :unprocessable_entity
     end
+    
   end
 
   def create
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:username])
     if @user.update(info)
       redirect_to @user
+ 
     else
       render :edit, status: :unprocessable_entity
     end

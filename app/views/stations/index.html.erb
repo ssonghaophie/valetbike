@@ -4,12 +4,18 @@
       Welcome to our website : <em> ValetBike </em>!
     </div>  
     <div>
+      
       <ul class = "navbar">
-        <li><a href="/"><b> Home </b></a></li>
-        <a href="#Services"> <b>Services</b> </a>
-        <li><a href="/about"> <b>About </b> </a></li>
-        <li> <%= link_to('Signup', users_path ) %></li>
+        <b> <font size="+2"><h2><a href="/"> Home </a> &nbsp;
+        <a href="#Services"> Services </a>&nbsp;
+        <a href="/about"> About  </a>&nbsp;</h2></font></b>
       </ul>
+    </div>
+
+    <div>
+      <ul class = "subbar">
+      <%= link_to('Sign In', users_path ) %>
+
     </div>
 
     <div>

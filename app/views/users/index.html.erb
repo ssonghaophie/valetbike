@@ -1,36 +1,15 @@
 
-<h2>Sign up</h2>
+<h1> ValetBike</h1>
  <%= link_to('Home', root_path) %><br />
 <p>
    
     <form>
         <p>
-            <label><strong> First Name: </strong></label>
+            <label><strong> Username: </strong></label>
             <p>
-            <input first name=@user.first_name style="border:1px solid #000000"  >
+            <input first name=@user.username style="border:1px solid #000000"  >
             </p>
 
-        </p>
-
-        <p>
-        <label><strong> Last Name: </strong></label>
-            <p>
-            <input last name=@user.last_name style="border:1px solid #000000"  >
-            </p>
-        </p>
-
-        <p>
-        <label><strong> Username: </strong></label>
-            <p>
-            <input username=@user.username style="border:1px solid #000000" >
-            </p>
-        </p>
-
-        <p>
-            <label><strong> Email: </strong></label>
-            <p>
-            <input  email=@user.email style="border:1px solid #000000" >
-            </p>
         </p>
 
         <p>
@@ -40,7 +19,14 @@
             </p>
         </p>
         <p>
-            <input type= "submit" value ="Submit" style="border:1px solid #000000" >
+            <input type= "submit" value ="Sign in" style="border:1px solid #000000" >
+        </p>
+
+        <p>
+            <a href="signup"> Sign up </a>
+             <%# <%= link_to("Sign up", ) %>
+
+            
         </p>
     </form>
 
