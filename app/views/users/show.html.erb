@@ -1,27 +1,25 @@
 
 <h2>Profile</h2>
+Hi,<%=@user.first_name%>
 <%= link_to('Home', root_path) %><br />
-<p>
-    <strong>first name:</strong>
-    <%= @user.first_name %>
-</p>
+<table summary="Task detail view">
+    <tr>
+      <th>First Name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @user.last_name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+    <th>History</th>
+      <td><%= @user.trips %></td>
+    </tr>
 
-<p>
-    <strong>last name:</strong>
-    <%= @user.last_name %>
-</p>
+  </table>
 
-<p>
-    <strong> email Address: </strong>
-    <%= @user.email %>
-</p>
-
-
-<ul>
-  <li><%= link_to "Show", user_path(@user) %></li>
-  <li><%= link_to "Edit", edit_user_path(@user) %></li>
-  <li><%= link_to "Destroy", user_path(@user), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+  

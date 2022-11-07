@@ -5,49 +5,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:username])
+    @user = User.find(params[:id])
   end
+ 
 
-  def new 
+  def new
     @user = User.new
-  end
-
-  def signup
-    @user = User.new(first_name:"...",
-                    last_name:"...",
-                    username:"...",
-                    password:"...", 
-                    email:"...")
-    if @user.save
-      redirect_to @user
-    # else
-    #   render :new, status: :unprocessable_entity
-    end
-    
+   
   end
 
   def create
-    @user = User.find_bu(username: params[:username])
-    if !!@user && @user.authenticate(params[:password])
-        session[:username] = @username
-        redirect_to root
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "Welcome to ValetBike!" 
+      redirect_to @user  
     else
-      message ="nooo"
-      redirect_to login_path, notice: message 
-    end 
+      render 'new'
+    end
   end
 
-  # The edit action fetches the article from the database,
-  #  and stores it in @article so that it can be used when building the form. 
-  def edit
-    @user = User.find(params[:username])
-  end
-  
   # The update action (re-)fetches the user from the database,
   #  and attempts to update it with the submitted form data 
   # filtered by info.
 
-  def update_info
+  def edit
     @user = User.find(params[:username])
     if @user.update(info)
       redirect_to @user
@@ -57,31 +38,33 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_payment
+  def update
     @user = User.find(params[:username])
     if @user.update(payment)
       redirect_to @user
     else
-      render :edit, status: :unprocessable_entity
+      render ('edit')
     end
   end
 
   def destroy
-    @user = Users.find(params[:username])
+    @user = User.find(params[:username])
     @user.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to root_path
   end
 
-
+  def delete
+    @user = User.find(param[:id])
+  end
     
   private
   def payment
     params.require(:card_no, :cvv, :expire_time, :zip_code);
   end
 
-  def info
-    params.require(:first_name, :last_name, :password, :email)
-          .permit(:username);
+  def user_params
+    params.require(:user).
+    permit(:first_name, :last_name, :username, :email, :password );
   end
 
 

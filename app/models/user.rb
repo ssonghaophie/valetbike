@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-    validates_presence_of    :username,
-                             :first_name,
+    validates_presence_of    :first_name,
                              :last_name,
-                             :password,
-                             :email
-                             :trip
+                             :username,
+                             :email,
+                             :password
+                             
+                             
 
 
     validates_uniqueness_of  :username
@@ -12,5 +13,9 @@ class User < ApplicationRecord
     has_many :trips
     has_many :comments
     has_many :payments
-
+    
+    def remember
+        self.remember_token = User.new_token
+        update_attribute(:remember_digest, User.digest(remember_token))
+    end
 end

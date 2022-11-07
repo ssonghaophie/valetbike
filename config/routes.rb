@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   match '/index', to: "stations#index", via: :get
   # match '/show', to: "stations#index", via: :get
   # match '/login', to: "stations#index", via: :get
-  match '/signup' => 'users#signup', as: :signup, via: :get
+  match '/signup',  to: 'users#new', via: :get
+  match '/signin',  to: 'sessions#new', via: :post
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   resources :users do
     member do
-      get :delete
+      get :following, :followers
     end
   end
-
-
+  resources :sessions,   only: [:new, :create, :destroy]
 
 
 end

@@ -1,6 +1,6 @@
 module ApplicationHelper
     def logged_in?
-        !!session[:user_id]
+        !!session[:username]
     end
 
     def current_user

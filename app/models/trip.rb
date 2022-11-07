@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
                             :endStation,
                             :date
                             
-  
+    
     validates_uniqueness_of  :identifier
     has_one :amount, class_name: :Payment, foreign_key: :trip_id
 end
