@@ -4,9 +4,10 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :first_name
       t.string :last_name
       t.string :username
-      t.string :email
-      t.string :password
+      t.string :email, null: false
+      t.string :password_digest
       t.string :trips
+      t.timestamps
     end
   end
 
@@ -14,3 +15,5 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     drop_table(:users)
   end
 end
+
+

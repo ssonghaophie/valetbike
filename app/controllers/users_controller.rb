@@ -13,13 +13,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # def create
+  #   @user = User.new(user_params)
+  #   if @user.save
+  #     flash[:success] = "Welcome to ValetBike!" 
+  #     session[:user_id] = @user.id
+  #     redirect_to root_path, notice: 'Successfully created account' 
+  #   else
+  #     render 'new'
+  #   end
+  # end
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to ValetBike!" 
-      redirect_to @user  
+    # stores saved user id in a session
+      session[:user_id] = @user.id
+      redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 

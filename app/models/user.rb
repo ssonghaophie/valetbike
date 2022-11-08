@@ -1,22 +1,26 @@
-class User < ApplicationRecord
-    validates_presence_of    :first_name,
-                             :last_name,
-                             :username,
-                             :email,
-                             :password
+# class User < ApplicationRecord
+#     validates_presence_of    :first_name,
+#                              :last_name,
+#                              :username,
+#                              :email,
+#                              :password
                              
                              
+#     # adds virtual attributes for authentication
+#     has_secure_password
+#     # validates email
+#     validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
 
-
-    validates_uniqueness_of  :username
-
-    has_many :trips
-    has_many :comments
-    has_many :payments
+#     has_many :trips
+#     has_many :comments
+#     has_many :payments
     
+#     has_secure_password
+
+# end
+class User < ApplicationRecord
+    # adds virtual attributes for authentication
     has_secure_password
-    def remember
-        self.remember_token = User.new_token
-        update_attribute(:remember_digest, User.digest(remember_token))
-    end
-end
+    # validates email
+    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+ end

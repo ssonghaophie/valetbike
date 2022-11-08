@@ -1,7 +1,8 @@
 
 <h2>Profile</h2>
 Hi,<%=@user.first_name%>
-<%= link_to('Home', root_path) %><br />
+<%=link_to('Home', root_path)%>
+
 <table summary="Task detail view">
     <tr>
       <th>First Name</th>
@@ -17,7 +18,7 @@ Hi,<%=@user.first_name%>
     </tr>
     <tr>
     <th>History</th>
-      <td><%= @user.trips %></td>
+      <%# <td><%= @user.trips %></td>
     </tr>
 
   </table>

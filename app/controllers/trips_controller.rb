@@ -8,6 +8,10 @@ class TripsController < ApplicationController
     #show the trip observation with given parameters
     def show 
       @trip = Trip.find(params[:id])
+      if @trip
+        redirect_to trip_path
+      else
+        render('new')
     end
     
     #make new trip
