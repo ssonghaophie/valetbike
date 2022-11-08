@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # match '/show', to: "stations#index", via: :get
   # match '/login', to: "stations#index", via: :get
   match '/signup',  to: 'users#new', via: :get
-  match '/signin',  to: 'sessions#new', via: :post
-  match '/signout', to: 'sessions#destroy', via: :delete
+  get    '/signin',   to: 'sessions#new'
+  post   '/signin',   to: 'sessions#create'
+  delete '/signout',  to: 'sessions#destroy'
 
   resources :users do
     member do

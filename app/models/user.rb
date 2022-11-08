@@ -14,6 +14,7 @@ class User < ApplicationRecord
     has_many :comments
     has_many :payments
     
+    has_secure_password
     def remember
         self.remember_token = User.new_token
         update_attribute(:remember_digest, User.digest(remember_token))
