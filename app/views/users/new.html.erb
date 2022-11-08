@@ -8,21 +8,33 @@
 
     <%= render 'shared/error_messages', object: f.object%> 
     
-    
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: 'form-control' %>
+      <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      
 
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: 'form-control' %>
+      <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
 
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %>
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>      
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+     
 
       <%= f.submit "Create account", class: "btn btn-primary" %>
      
