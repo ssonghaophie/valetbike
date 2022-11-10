@@ -38,12 +38,19 @@
         <%= f.email_field :email, class: 'form-control' %>
       </div>
       
-      <div>
+      <div >
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
+        <li id = "pass">
+            <div>Password <em> Must Contain</em></div>
+            <div># a digit</div>
+            <div># a lower case character</div>
+            <div># an upper case character</div>
+            <div># a symbol</div>
+          </li>
       </div>
      
-
+        
       <%= f.submit "Create account", class: "btn btn-primary" %>
      
     <% end %>
