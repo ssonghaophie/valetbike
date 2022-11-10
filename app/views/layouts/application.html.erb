@@ -14,10 +14,17 @@
   </head>
   <body>
     <div id="site-container" class="flexbox vertical stretch flex-1">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+          <%= message %>
+        </div>
+      <% end %>
       <div class="flexbox vertical center">
         <%= yield %>
       </div>
     </div>
   </body>
+
+  
 
 </html>

@@ -1,21 +1,10 @@
 class SessionsController < ApplicationController
-  
+
   def new
+    @user= User.new
   end
 
-  # def create
-  #   user = User.find_by(email: params[:session][:email])
-  #   if user 
-  #     session[:user_id] =  user.id  
-  #     redirect_to user
-  #   else 
-  #     flash[:danger] = 'Invalid email/password combination'
-    
-  #   end
-  # end
 
-  # def destroy
-  # end
   def create
     @user = User.find_by(email: params[:session][:email])
     # finds existing user, checks to see if user can be authenticated
@@ -35,6 +24,7 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: 'Logged Out'
   end
 
+  
 
 end
   
