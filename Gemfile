@@ -79,7 +79,10 @@ end
 gem 'dotenv-rails'
 
 # Suggested Potentially Useful Gems
-# gem 'devise'
+gem 'devise'
+
+gem 'sass-rails'
+
 # gem 'httparty'
 # gem 'paperclip
 # gem 'uniquify'
