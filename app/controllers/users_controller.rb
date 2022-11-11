@@ -30,18 +30,19 @@ class UsersController < ApplicationController
   # filtered by info.
 
   def edit
-    @user = User.find(params[:username])
-    if @user.update(info)
-      redirect_to @user
+    @user = User.find(params[:id])
+    # if @user.update(info)
+    #   redirect_to @user
  
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    # else
+    #   render :edit, status: :unprocessable_entity
+    # end
   end
 
   def update
-    @user = User.find(params[:username])
-    if @user.update(payment)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "Profile updated"
       redirect_to @user
     else
       render ('edit')
@@ -65,7 +66,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).
-    permit(:first_name, :last_name, :username, :email, :password );
+    permit(:first_name, :last_name, :username, :email, :password);
   end
 
 

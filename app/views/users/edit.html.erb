@@ -1,3 +1,46 @@
 <h1>Edit Info</h1>
 
-<%= render "user", user: @user %>
+<div class="row">
+  <div class="col-md-4 " style="width: 100%; flex: 0 0 100%;max-width: 100%;">
+  <%= form_for(@user)  do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object%> 
+    
+      <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      
+
+      <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>      
+
+      
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      
+      <div >
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+        <li id = "pass">
+            <div>Password <em> Must Contain</em></div>
+            <div># a digit</div>
+            <div># a lower case character</div>
+            <div># an upper case character</div>
+            <div># a symbol</div>
+          </li>
+      </div>
+     
+        
+      <%= f.submit "Update Infomation", class: "btn btn-primary" %>
+     
+    <% end %>
