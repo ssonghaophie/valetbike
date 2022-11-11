@@ -41,6 +41,11 @@
       <div >
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
+
+      </div>
+      <div>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation , class: 'form-control'%>
         <li id = "pass">
             <div>Password <em> Must Contain</em></div>
             <div># a digit</div>
@@ -50,6 +55,7 @@
           </li>
       </div>
      
+
         
       <%= f.submit "Create account", class: "btn btn-primary" %>
      
