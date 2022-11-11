@@ -17,15 +17,13 @@
         <a href="#about" role="button"><li>ABOUT</li></a>
         <a href="#Services" role="button"><li>SERVICES</li></a>
         <% if logged_in? %>
-
-          <%= link_to('Profile', current_user ) %>
-          <a href="/logout" role="button"><li>Log Out</li></a>
-
+          <%= link_to('Profile', current_user, class: 'index-link') %>
+          <%= link_to('Log Out', logout_path, class: 'index-link') %>
+          
         <% else %>
-          <a href="/sign_in" role="button"><li>LOG IN</li></a>
-          <a href="/sign_up" role="button"><li>SIGN UP</li></a>
+          <%= link_to('Log in', sign_in_path, class: 'index-link') %>
+          <%= link_to('Sign up', sign_up_path, class: 'index-link') %>
         <% end %>
-
       </ul>
     </div>
   </div>
