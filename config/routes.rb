@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'sign_up', to: 'users#create'
   get 'sign_in',   to: 'sessions#new'
   post 'sign_in',   to: 'sessions#create', as: 'log_in'
-  delete '/signout',  to: 'sessions#destroy'
+  delete '/logout',  to: 'sessions#destroy'
   # get 'password', to: 'passwords#edit', as: 'edit_password'
   # patch 'password', to: 'passwords#update'
   # get 'password/reset', to: 'password_resets#new'

@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     # finds existing user, checks to see if user can be authenticated
     if @user.present? && @user.authenticate(params[:session][:password])
     # sets up user.id sessions
-      session[:user_id] = @user.id
+      # session[:user_id] = @user.id
+      log_in @user
       redirect_to @user
     else
       flash.now[:danger] = 'Invalid email or password'
