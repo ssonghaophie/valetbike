@@ -17,9 +17,10 @@
         <a href="#about" role="button"><li>ABOUT</li></a>
         <a href="#Services" role="button"><li>SERVICES</li></a>
         <% if logged_in? %>
-          
+
           <%= link_to('Profile', current_user ) %>
-          
+          <a href="/logout" role="button"><li>Log Out</li></a>
+
         <% else %>
           <a href="/sign_in" role="button"><li>LOG IN</li></a>
           <a href="/sign_up" role="button"><li>SIGN UP</li></a>
