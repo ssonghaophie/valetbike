@@ -1,8 +1,8 @@
 
 <h1>Forgot password</h1>
-
+<div class = "container">
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 30%;max-width: 33%;">
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -10,4 +10,5 @@
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>
