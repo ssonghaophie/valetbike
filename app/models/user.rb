@@ -17,4 +17,19 @@ class User < ApplicationRecord
         confirmation: true, 
         on: :create 
 
+    #pay_customer stripe_attributes: :stripe_attributes
+    pay_customer stripe_attributes: ->(pay_customer) { metadata: { { user_id: pay_customer.owner_id } } }
+    def stripe_attributes(pay_customer)
+        {
+            address: {
+                city: pay_customer.owner.city,
+                country: pay_customer.owner.country
+            },
+            metadata: {
+                pay_customer_id: pay_customer.id,
+                user_id: id #or pay_cumstomer.owner_id
+            }
+        }
+    end
+
 end

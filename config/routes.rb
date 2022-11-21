@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   end
   resources :sessions,   only: [:new, :create, :destroy]
 
-
+  get 'checkout', to: 'checkouts#show'
+  #successfully purchase the product
+  get 'checkout/success', to: 'checkouts#success' 
+  get 'biling', to:'biling#show'
 end
