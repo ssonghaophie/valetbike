@@ -21,9 +21,16 @@
     align-items: center;
  }
 
- #map {
-    height: 70vh;
-    width: 120vh;
+ #googleMap {
+    height: 90vh;
+    width: 100%;
+ }
+
+ #output {
+   text-align: center;
+   font-size: 2em;
+   margin: 15px auto;
+   background-color: rgb(133, 153, 171);
  }
 
  html,body {

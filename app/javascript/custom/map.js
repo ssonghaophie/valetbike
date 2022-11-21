@@ -1,14 +1,14 @@
 
-function initMap(position){
-    let mapOptions = {
-      // center: {lat: lat,lng: lng},
-      center: {lat: 41.881832,lng:-87.623177},
-      zoom: 12
-    }
+// function initMap(position){
+//     let mapOptions = {
+//       // center: {lat: lat,lng: lng},
+//       center: {lat: 41.881832,lng:-87.623177},
+//       zoom: 12
+//     }
   
-    let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+//     let map = new google.maps.Map(document.getElementById('map'), mapOptions);
   
-}
+// }
 
 
 // function getMyLocation(){
