@@ -28,5 +28,5 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkouts#show'
   #successfully purchase the product
   get 'checkout/success', to: 'checkouts#success' 
-  get 'biling', to:'biling#show'
+  get 'billing', to:'billing#show'
 end
