@@ -3,6 +3,6 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    render('about')
+    render about_path
   end
 end
