@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   match '/about', to: "welcome#about", via: :get
   match '/index', to: "welcome#index", via: :get
+  match '/service', to: "welcome#service", via: :get
   # match '/show', to: "stations#index", via: :get
   # match '/login', to: "stations#index", via: :get
   get 'sign_up',  to: 'users#new', via: :get

@@ -21,8 +21,9 @@
         <a class="navbar_logo" href="index.html"><h1>VALET<span>BIKE</span></h1></a>
       </div>
       <ul class="navigation">
-        <a href="#about" role="button"><li>ABOUT</li></a>
-        <a href="#Services" role="button"><li>SERVICES</li></a>
+        <%= link_to('About', about_path, class: 'index-link') %> 
+        <%= link_to('Service', service_path, class: 'index-link') %> 
+        
         <% if logged_in? %>
           <%= link_to('Profile', current_user, class: 'index-link') %>
           <%= link_to('Log Out', logout_path, class: 'index-link') %>
