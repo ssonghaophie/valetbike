@@ -85,3 +85,6 @@ gem 'dotenv-rails'
 # gem 'paperclip
 # gem 'uniquify'
 # gem 'will_paginate'
+
+gem "stripe", "~> 7.0"
+gem "pay", "~> 5.0"
