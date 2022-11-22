@@ -22,10 +22,8 @@
       </div>
       <ul class="navigation">
         <%= link_to('About', about_path, class: 'index-link') %> 
-        <%= link_to('Service', service_path, class: 'index-link') %> 
+        <%= link_to('Service', about_url, class: 'index-link') %> 
         
-        <a href="welcome#about" role="button"><li>ABOUT</li></a>
-        <a href="#Services" role="button"><li>SERVICES</li></a>
         <% if logged_in? %>
           <%= link_to('Profile', current_user, class: 'index-link') %>
           <%= link_to('Log Out', logout_path, class: 'index-link') %>
@@ -258,12 +256,12 @@
 
   </div>
 
-  <div class="jumbotron" id='services'>
+  <div class="jumbotron">
     <a id="Services"> <b><p><b>Services </b></p></b> </a>
     <p>We provide share bike rides!</p>
-    <li>Join us to <em>Unlock</em> the bike</li>
-    <li><em>Ride</em> a bike to the destination</li>
-    <li><em>Return</em> the bike to a station & confirm return</li>
+    <li>Unlock</li>
+    <li>Ride</li>
+    <li>Return</li>
 
   </div>
 

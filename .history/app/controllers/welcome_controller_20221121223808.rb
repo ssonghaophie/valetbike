@@ -3,9 +3,9 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    render about_path
+    render('about')
   end
-  def service
-    render('service')
+  def about
+    render('about')
   end
 end
