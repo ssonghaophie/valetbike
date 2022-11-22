@@ -3,7 +3,31 @@
 Smith College CSC223: Software Engineering\
 Starter App for ValetBike project\
 Team: Green Dolphin Paradise\
-Team Members: Sophie Song, Xinran Bi, Evelyn Gao
+Team Members: Evelyn Gao, Sophie Song, Sylvia Tan, Xinran Bi 
+
+## Overview of dev environment setup (e.g. updates to _env.rb)
+
+**Updates to Gemfile:**
+- `gem bootstrap-sass`
+- `gem pay`
+- `gem stripe`
+
+**Tech Stack**
+- Ruby
+- Javascript
+- Rails
+- MySQL
+- HTML
+- CSS
+- Bootstrap
+
+## Instructions for populating database (e.g. a rake task or seed setup)
+1. `bundle install`
+2. `rake db:drop` (if a previous database has been created or in use)
+3. `rake db:create`
+4. `rake db:migrate`
+5. `rake db:seed`
+3. `rackup` or `rails s`
 
 ## Environment Configuration
 
