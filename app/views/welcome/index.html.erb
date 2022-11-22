@@ -39,7 +39,7 @@
     <div class="welcome_message"> <h1>Ride With the Wind, Share Your Freedom </h1></div>  
   <div>
 
-  <%=link_to "purchase ride", checkout_path, class: 'btn btn-success' %>
+ 
   <%# <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
       <div class="section-title">
@@ -140,13 +140,12 @@
       //can take html inside the info window to format
       infoWindow.setContent(`
         <h3>Name of the Location</h3>
-        <div class='alert-info'><br>From: </br> <br>To: </br> <br>Biking distance: </br> <br>Duration : </br><br></br></div>
-        <button class="btn btn-info btn-lg "><i class="fas fa-map-signs"></i>Ride</button>
+        <div class='alert-info'><br>From: </br> <br>To: </br> <br>Biking distance: </br> <br>Duration : </br><br></br></div>      
+        <%=link_to "Ride", checkout_path, class: 'btn btn-info btn-lg' %>
         <button class="btn btn-info btn-lg "><i class="fas fa-map-signs"></i>QR Code</button>
       `);
 
       infoWindow.open(infoWindowOpenOptions)
-
 
 
 

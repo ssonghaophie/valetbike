@@ -41,3 +41,7 @@
  #pass {
    text-align: left;
  }
+
+ .welcome_message {
+   padding-top: 40px;
+ }
