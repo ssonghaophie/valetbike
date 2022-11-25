@@ -5,7 +5,4 @@ class WelcomeController < ApplicationController
   def about
     render('about')
   end
-  def service
-    render('service')
-  end
 end
