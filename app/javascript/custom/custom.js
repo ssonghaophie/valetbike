@@ -1,4 +1,4 @@
 
 
 
-onsole.log("custom js file loaded")
+console.log("custom js file loaded")
