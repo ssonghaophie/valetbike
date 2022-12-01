@@ -9,7 +9,9 @@ namespace :import do
             s.address = row["address"]
             s.identifier = row["identifier"]
             s.docked_bike_count = row["docked_bike_count"]
-            puts s.docked_bike_count
+            s.longitude = row["longitude"]
+            s.latitude = row["latitude"]
+            # puts s.docked_bike_count
             s.save
         end
 

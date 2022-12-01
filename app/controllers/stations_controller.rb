@@ -5,9 +5,6 @@ class StationsController < ApplicationController
     @bikes = Bike.all.order(identifier: :asc)
   end
 
-  def about
-    render('about')
-  end
 
   
   
