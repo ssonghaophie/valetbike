@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_190043) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
@@ -88,23 +88,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
     t.index ["customer_id", "processor_id"], name: "index_pay_subscriptions_on_customer_id_and_processor_id", unique: true
   end
 
-  create_table "pay_webhooks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "processor"
-    t.string "event_type"
-    t.json "event"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "identifier"
+  create_table "stations", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "identifier", unsigned: true
     t.string "name"
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -122,16 +114,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "email", null: false
-    t.string "trips"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "password"
+    t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at", precision: nil
+    t.datetime "reset_sent_at"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
