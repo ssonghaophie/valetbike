@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "pay_charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -100,11 +100,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
-    t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.float "latitude"
     t.float "longitude"
+
+    t.integer "docked_bike_count"
+
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -122,16 +125,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "email", null: false
-    t.string "trips"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "password"
+    t.string "email"
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at", precision: nil
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"

@@ -17,10 +17,15 @@ Rails.application.routes.draw do
   get 'sign_in',   to: 'sessions#new'
   post 'sign_in',   to: 'sessions#create', as: 'log_in'
   get 'logout',  to: 'sessions#destroy'
+
   
   # authenticate :user, lambda { |u| u.admin? } do
   #   mount Sidekiq::Web => '/sidekiq'
   # end
+
+  get 'stations', to: 'stations#index'
+
+
   resources :users do
     member do
       get :following, :followers

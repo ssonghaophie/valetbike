@@ -11,8 +11,9 @@ namespace :import do
             s.docked_bike_count = row["docked_bike_count"]
             s.longitude = row["longitude"]
             s.latitude = row["latitude"]
-
             puts s.latitude
+            puts s.docked_bike_count
+
             s.save
         end
 

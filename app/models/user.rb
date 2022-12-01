@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   #  pay_customer
   
   # pay_customer stripe_attributes: :stripe_attributes
@@ -16,8 +17,8 @@ class User < ApplicationRecord
   # end
 
   
+    attr_accessor  :activation_token, :reset_token, :remember_token
 
-    attr_accessor  :activation_token, :reset_token
     # adds virtual attributes for authentication
     has_secure_password
     # validates email
@@ -55,6 +56,12 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
    
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+  
   # Activates an account.
   def activate
     update_attribute(:activated,    true)

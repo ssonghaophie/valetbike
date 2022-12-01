@@ -7,6 +7,11 @@ class CreateStations < ActiveRecord::Migration[7.0]
       t.float "latitude", precision: 10, scale: 6, null: false, default: 0
       t.float "longitude", precision: 10, scale: 6, null: false, default: 0
       t.integer :docked_bike_count
+<<<<<<< Updated upstream
+=======
+      t.has_many :bikes
+
+>>>>>>> Stashed changes
       t.timestamps
     end
   end
