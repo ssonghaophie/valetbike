@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # root to: "stations#index"
   root 'welcome#index'
-
+  get 'GeoJSON', to: 'stations#GeoJSON'
   get 'checkout', to: 'checkouts#show'
   post 'create-checkout-session', to: 'checkouts#create'
   # get 'checkout', to: 'checkouts#create-checkout-session'

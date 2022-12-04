@@ -5,13 +5,29 @@ class StationsController < ApplicationController
     @bikes = Bike.all.order(identifier: :asc)
   end
 
-  def about
-    render('about')
+  def show
+    @bike = Bike.find(params[:current_station_id])
   end
 
-  def show
-    @bikes = Bikes.find(params[:current_station_id])
+  def GeoJSON
+    @s = Station.all
+
+    geojson = @s.map do |station|
+      {
+        "type": "Feature",
+        "properties": {
+            "name": station.name ,
+            "address": station.address,
+            "popupContent": "Change This Later"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [station.longitude,station.latitude] 
+        }
+      }
+    end
+    render(json: geojson)
+    return geojson
   end
-  
   
 end
