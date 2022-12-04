@@ -1,6 +1,11 @@
-<h1>Checkout!</h1>
+<h1>Pay your ride now!</h1>
 
-<%= render partial: 'pay/stripe/checkout_button',locals:{
+<%# <%= render partial: 'pay/stripe/checkout_button',locals:{
     # session: @checkout_session,
     title: "Buy now"
-}%>
+    
+}%> 
+
+<form action="/create-checkout-session" method="POST">
+        <button type="submit" class="btn btn-primary" id="checkout-button">Checkout</button>
+</form>

@@ -9,6 +9,9 @@ class StationsController < ApplicationController
     render('about')
   end
 
+  def show
+    @bikes = Bikes.find(params[:current_station_id])
+  end
   
   
 end

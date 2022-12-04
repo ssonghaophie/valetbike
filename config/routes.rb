@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'checkout', to: 'checkouts#show'
+  post 'create-checkout-session', to: 'checkouts#create'
+  # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
-  get 'checkout/success', to: 'checkouts#success' 
+  #get 'checkout/success', to: 'checkouts#success' 
   get 'billing', to:'billing#show'
 
   match '/about', to: "welcome#about", via: :get
