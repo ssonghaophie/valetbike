@@ -7,6 +7,16 @@ var mapOptions = {
 
 };
 
+const features = [
+  {
+    position: new google.maps.LatLng(42.335499,-72.673988)
+  },
+  { position: new google.maps.LatLng(42.3163,-72.6403)
+  }
+
+];
+
+
 //create a map
 var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
 
@@ -19,8 +29,20 @@ let markerOptions = {
 }
 
 //set up marker 
-let marker = new google.maps.Marker(markerOptions);
-marker.setMap(map)
+// let marker = new google.maps.Marker(markerOptions);
+// marker.setMap(map)
+// Create markers.
+for (let i = 0; i < features.length; i++) {
+  const marker = new google.maps.Marker({
+    position: features[i].position,
+    // icon: icons[features[i].type].icon,
+    map: map
+  });
+  // marker.setMap(map)
+}
+
+window.initMap = initMap;
+
 
 //set up popup information window
 const infoWindowOptions = {
