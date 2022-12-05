@@ -90,6 +90,6 @@ gem 'dotenv-rails'
 gem "stripe", "~> 7.0"
 gem "pay", "~> 5.0"
 
-gem 'webpacker', '~> 3.5'
+# gem 'webpacker', '~> 3.5'
 
 gem 'psych', '< 4'
