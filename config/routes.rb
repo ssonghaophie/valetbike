@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'GeoJSON', to: 'stations#GeoJSON'
   get 'checkout', to: 'checkouts#show'
-  post 'create-checkout-session', to: 'checkouts#create'
+  get 'create-checkout-session', to: 'checkouts#create'
   get 'cancel.html.erb', to: 'checkouts#cancel'
   get 'success.html.erb', to: 'checkouts#success'
+
+  get 'membership', to: 'users#membership'
 
   # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
