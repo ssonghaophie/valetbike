@@ -1,8 +1,8 @@
 class User < ApplicationRecord
+  pay_customer
 
-  #  pay_customer
-  
-  # pay_customer stripe_attributes: :stripe_attributes
+  #  pay_customer stripe_attributes: :stripe_attributes
+  # pay_customer stripe_attributes: ->(pay_customer) { metadata: { { user_id: pay_customer.owner_id } } }
   # def stripe_attributes(pay_customer)
   #   {
   #     address: {

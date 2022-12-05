@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   # root to: "stations#index"
   root 'welcome#index'
-
+  get 'GeoJSON', to: 'stations#GeoJSON'
   get 'checkout', to: 'checkouts#show'
+  post 'create-checkout-session', to: 'checkouts#create'
+  get 'cancel.html.erb', to: 'checkouts#cancel'
+  get 'success.html.erb', to: 'checkouts#success'
+
+  # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
-  get 'checkout/success', to: 'checkouts#success' 
+  #get 'checkout/success', to: 'checkouts#success' 
   get 'billing', to:'billing#show'
 
   match '/about', to: "welcome#about", via: :get

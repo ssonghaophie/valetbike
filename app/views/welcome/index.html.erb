@@ -85,7 +85,7 @@
 
   <div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places"></script>
-    
+    <script src="/GeoJSON"></script>
     <%# import javascript file %>
     <script type="text/javascript">
 
@@ -136,12 +136,13 @@
         });
 
         marker.setMap(map)
-
+        let j = i.toString();
+       
         const contentString = `
-        <h3>Name of the Location</h3>
-        <div class='alert-info'><br>From: </br> <br>To: </br> <br>Biking distance: </br> <br>Duration : </br><br></br></div>      
-        <%=link_to "Ride", checkout_path, class: 'btn btn-info btn-lg' %>
-        <button class="btn btn-info btn-lg "><i class="fas fa-map-signs"></i>QR Code</button>
+        
+         <% if @stations.present? %>
+          <%= render(partial: "stations/row", object: @stations.find_by("20"), as: :station) %>
+        <% end %>
         `
 
         const infowindow = new google.maps.InfoWindow({
@@ -198,6 +199,19 @@
 
       //put DirectionsRenderer on the map
       directionsDisplay.setMap(map);
+
+      // const callback = function (results) {
+      //   for (let i = 0; i < results.features.length; i++) {
+      //     const coords = results.features[i].geometry.coordinates;
+      //     const latLng = new google.maps.LatLng(coords[1], coords[0]);
+
+      //     new google.maps.Marker({
+      //       position: latLng,
+      //       map: map,
+      //     });
+      //   }
+      // };
+      // window.callback = callback;
 
 
       //function for calculating the routes and displaying it on the map
