@@ -17,8 +17,8 @@ Hi,<%=@user.first_name%>
       <td><%= @user.email %></td>
     </tr>
     <tr>
-    <th>History</th>
-      <%# <td><%= @user.trips %></td>
+    <th>Membership</th>
+      <td><%= link_to('Membership', membership_path ) %></td>
     </tr>
 
   </table>
