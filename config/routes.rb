@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'GeoJSON', to: 'stations#GeoJSON'
   get 'checkout', to: 'checkouts#show'
-  get 'create-checkout-session', to: 'checkouts#create'
+  post 'create-checkout-session', to: 'checkouts#create'
   get 'cancel.html.erb', to: 'checkouts#cancel'
   get 'success.html.erb', to: 'checkouts#success'
 
