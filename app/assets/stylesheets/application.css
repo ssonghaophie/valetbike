@@ -42,6 +42,15 @@
     padding: 0;
  }
 
+ hr{
+  border-style: none;
+  border-top-style: dotted;
+  border-color: #EAF6F6;
+  border-width: 7px;
+  width: 50%;
+  margin: 100px auto;
+}
+
  #pass {
    text-align: left;
  }
