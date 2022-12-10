@@ -14,7 +14,7 @@
     <div class="inner_header">
       <div class="logo_container">
         <img class= "logo" src="assets/bike.png" alt="valet bike logo">
-        <a class="navbar_logo" href="index.html"><h1>VALET<span>BIKE</span></h1></a>
+        <div id="refresh" class="logo_container" ><a class="navbar_logo" href=""><h1>VALET<span>BIKE</span></h1></a></div>
       </div>
       <ul class="navigation">
         <%= link_to('About', about_path, class: 'index-link') %> 
@@ -32,6 +32,7 @@
     </div>
   </div>
 
+ 
   <div class="panel_for_welcome_message">
     <div class="welcome_message" > <h1>Ride With the Wind, Share Your Freedom </h1></div>  
   <div>
@@ -60,16 +61,16 @@
         <div class="form-group">
             <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i>Go</button>
         </div>
+        <div>
+          <div id="output"></div>
+        </div>
 
 
     </div>
-    <%# <% <div class="container-fluid">
-        <div id="googleMap"></div>
-        <div id="output"></div>
-    </div> %>
+    
     <div id="map" style="width: 1000px; height: 500px;"></div>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places" ></script>
     <script src="/GeoJSON" type="application/json"></script>
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
@@ -77,13 +78,15 @@
   
     <script type="text/javascript">
         var myLocation;
-        const map = new google.maps.Map(document.getElementById("map"),{
+        var map = new google.maps.Map(document.getElementById("map"),{
           zoom: 15,
           center: new google.maps.LatLng(42.3163, -72.6403),
           mapTypeId: google.maps.MapTypeId.ROADMA
         });
-        
-        
+        // 
+        $("#refresh").click(function(){
+          location.reload();   
+        })      
         $.getJSON("/GeoJSON",function(data, status){   
             for (let i = 0; i < data.length; i++) {
               const latLng = new google.maps.LatLng(data[i].geometry.coordinates[0], data[i].geometry.coordinates[1]);
@@ -93,7 +96,7 @@
                 '<br>Duration : </br>'+
                 '<br>Biking distance: </br>'+ 
                 '<br>Duration : </br><br></br></div>'
-               
+                +'<a href="/stations/identifier='+data[i].properties.identifier+'">Ride</a>'
                 ;
 
               const infowindow = new google.maps.InfoWindow({
@@ -109,11 +112,18 @@
                       map,
                     });
               }); 
-            
             };
           });
-        
 
+        
+      //initialize DirectionsService for route method
+      var directionsService = new google.maps.DirectionsService();
+
+      //create DirectionsRenderer for display
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+
+      //put DirectionsRenderer on the map
+      directionsDisplay.setMap(map);
       
 
       //function for calculating the routes and displaying it on the map
@@ -205,9 +215,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       getMyLocation();
 
    </script>
-    <%# // <div id="container">
-    //   <div id = "map">map</div>
-    // </div> %>
+   
 
   </div>
   <hr>

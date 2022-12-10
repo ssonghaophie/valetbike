@@ -6,8 +6,8 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find_by(params[:identifier])
-    redirect_to @station
+    @stations = Station.find_by(params[:identifier])
+    
   end
 
   def GeoJSON
@@ -19,11 +19,12 @@ class StationsController < ApplicationController
         "properties": {
             "name": station.name ,
             "address": station.address,
-            "available_bikes": "111"
+            # "available_bikes": Bike.find_by[params[:current_station_id]],
+            "identifier": station.identifier
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [station.latitude,station.longitude] 
+            "coordinates": [station.latitude, station.longitude] 
         }
       }
     end
