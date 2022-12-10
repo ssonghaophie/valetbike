@@ -42,12 +42,23 @@
     padding: 0;
  }
 
+ hr{
+  border-style: none;
+  border-top-style: dotted;
+  border-color: #EAF6F6;
+  border-width: 7px;
+  width: 50%;
+  margin: 100px auto;
+}
+
  #pass {
    text-align: left;
  }
 
  .welcome_message {
    padding-top: 40px;
+   font-family: 'Dancing Script', serif;
+   text-shadow: 3px 2px #3aa281;
  }
 
  #services {
@@ -58,3 +69,10 @@
  #Services {
   text-align: center;
  }
+
+ .logo {
+  padding-top: 5px;
+  max-width: 100%;
+  height: auto;
+  width: 70px;
+}

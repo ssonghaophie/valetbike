@@ -33,3 +33,10 @@ body {
   color: var(--black-color);
   background: var(--white-color);
 }
+
+img {
+  float: left;
+  width:  100px;
+  height: 100px;
+  object-fit: cover;
+}

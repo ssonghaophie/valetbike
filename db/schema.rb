@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_190043) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "pay_charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -92,11 +92,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_190043) do
     t.integer "identifier", unsigned: true
     t.string "name"
     t.string "address"
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+    t.float "latitude"
+    t.float "longitude"
+
+    t.integer "docked_bike_count"
+
     t.float "latitude"
     t.float "longitude"
     t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
