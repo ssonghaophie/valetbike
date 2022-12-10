@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
   #get 'checkout/success', to: 'checkouts#success' 
-  get 'billing', to:'billing#show'
+  # match '/billing', to:'billing#show'
 
   match '/about', to: "welcome#about", via: :get
   match '/index', to: "welcome#index", via: :get

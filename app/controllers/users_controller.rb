@@ -62,8 +62,8 @@ class UsersController < ApplicationController
     
   end
 
-  def template
-  
+  def billing
+    @users = User.all.order(identifier: :asc)
   end
-  
+
 end

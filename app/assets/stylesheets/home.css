@@ -53,6 +53,7 @@
 .navigation {
     float: right;
     height: 100%;
+    color: white;
 }
 
 .navigation a {
@@ -80,24 +81,43 @@
 
 .panel_for_welcome_message {
     width: 100%;
-    height: 150px;
+    height: 250px;
     display: block;
-    background-color: #97DECE;
-    /* background-color: rgb(199, 221, 240); */
+    /* background-color: #97DECE; */
+    background-color: rgb(199, 221, 240);
 }
 
 .welcome_message {
     width: 100%;
     height: 100%;
     display: block;
-    background-color: #97DECE;
+    /* background-color: #97DECE; */
+    background-color: rgb(199, 221, 240);
 }
 
 .welcome_message h1 {
     height: 100%;
     vertical-align: middle;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     font-weight: 400;
-   
+
+}
+
+.border_box {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 400px;
+
+}
+
+.title_box {
+    display: flex;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
