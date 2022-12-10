@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get 'cancel.html.erb', to: 'checkouts#cancel'
   get 'success.html.erb', to: 'checkouts#success'
 
-  get 'membership', to: 'users#membership'
+  get 'membership', to: 'membership#show'
+  post 'create-checkout-session-membership', to: 'membership#create'
+  get 'cancel.html.erb', to: 'membership#cancel'
+  get 'success.html.erb', to: 'membership#success'
 
   get 'template', to:'users#template'
   # get 'checkout', to: 'checkouts#create-checkout-session'
