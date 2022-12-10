@@ -1,7 +1,7 @@
 <h2>current station</h2>
-<div class="flexbox vertical stretch">
-        <% if @stations.present? %>
-          <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+<%# <div class="flexbox vertical stretch">
+        <% if @station.present? %>
+          <%= render(partial: "stations/row") %>
         <% else %>
         <div class="empty">
           No stations found.
@@ -16,4 +16,4 @@
         </div>
 
 
-        <% end %>
+        <% end %> %>

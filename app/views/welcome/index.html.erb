@@ -36,23 +36,6 @@
     <div class="welcome_message" > <h1>Ride With the Wind, Share Your Freedom </h1></div>  
   <div>
 
- 
-  <%# <div class="page-section flexbox vertical stretch">
-    <div class="section-inner flexbox vertical stretch">
-      <div class="section-title">
-        Welcome to our website : <em> ValetBike </em>!
-      </div>  
-      <div>
-        
-        <ul class = "navbar">
-          <b> <font size="+2"><h2><a href="/"> Home </a> &nbsp;
-          <a href="#Services"> Services </a>&nbsp;
-          <a href="/about"> About  </a>&nbsp;</h2></font></b>
-          <%= link_to('Sign In', sign_in_path ) %>
-        <%# </ul>
-      </div> %> 
-      
-
   <div class="jumbotron">
     <div class="container-fluid">
         <p>Start Riding</p>
@@ -77,144 +60,61 @@
         <div class="form-group">
             <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i>Go</button>
         </div>
+
+
     </div>
-    <div class="container-fluid">
+    <%# <% <div class="container-fluid">
         <div id="googleMap"></div>
         <div id="output"></div>
-    </div>
-  </div>
-    
+    </div> %>
+    <div id="map" style="width: 1000px; height: 500px;"></div>
 
-  <div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places"></script>
-    <script src="/GeoJSON"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places"></script>
+    <script src="/GeoJSON" type="application/json"></script>
+     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
     <%# import javascript file %>
+  
     <script type="text/javascript">
-
-      //initialize map
-      var myLatLng = { lat: 42.3163, lng: -72.6403 };
-      var mapOptions = {
-          center: myLatLng,
+        var myLocation;
+        const map = new google.maps.Map(document.getElementById("map"),{
           zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-
-      };
-
-      //create a map
-      var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-
-
-      let station_list = [ 
-        {identifier:20,name:"Village Hill/State Hospital",docked_bike_count:6,address:"Village Hill/State Hospital",latitude:42.3137038,longitude:-72.6507563},
-        {identifier:21,name:"Florence Bank",docked_bike_count:7,address:"19 Meadow Street Florence MA @ Lilly Library",latitude:42.335499,longitude:-72.673988},
-        {identifier:22,name: "YMCA/Childs Park",docked_bike_count:8,address:"YMCA/Childs Park",latitude:42.3289,longitude:-72.6465},
-        {identifier:23,name:"Forbes Library",docked_bike_count:6,address:"20 West Street Northampton MA",latitude:42.3167,longitude:-72.638},
-        {identifier:24,name:"Florence Center",docked_bike_count:2,address:"31 Main Street Florence MA",latitude:42.3314,longitude:-72.6637},
-        {identifier:25,name:"Cooley Dickinson Health Care",docked_bike_count:6,address:"51 Locust Street Northampton MA",latitude:42.3321,longitude:-72.654},
-        {identifier:26,name:"John M Greene Hall/Smith College",docked_bike_count:5,address:"1 Chapin Way Northampton MA @ John M. Greene Hall",latitude:42.3194,longitude:-72.6402},
-        {identifier:27,name:"Pulaski Park/Downtown",docked_bike_count:3,address:"274 Main Street Northampton MA at Pulaski Park",latitude:42.3172,longitude:-72.6355},
-        {identifier:28,name:"Northampton Train Station",docked_bike_count:5,address:"Northampton Train Station",latitude:42.3189,longitude:-72.6286},
-        {identifier:29,name:"State St/Mass Central Rail Trail", docked_bike_count:4,address:"State Street/Mass Central Rail Trail",latitude:42.3588,longitude:-71.0564},
-        {identifier:30,name:"Jackson Street", docked_bike_count:8,address:"7A-7D Jackson Street Northampton MA",latitude:42.3301,longitude:-72.6453},
-        {identifier:31,name:"Main Street/Court House", docked_bike_count:3,address:"99 Main Street Northampton MA",latitude:42.3195,longitude:-72.6328},
-        {identifier:32,name:"Main Street/Bridge Street", docked_bike_count:8,address:"1 Bridge Street Northampton MA",latitude:42.3205,longitude:-72.6303},
-        {identifier:33,name:"NorthamptonHigh School", docked_bike_count:8,address:"380 Elm Street Northampton MA",latitude:42.3252,longitude:-72.6508}
-      ];
-      //create marker
-      let markerOptions = {
-        position: new google.maps.LatLng(42.3163,-72.6403),
-        zoom:12,
-        mapTypeControlOptions: {
-                  mapTypeIds: ["roadmap"]
-                }
-      }
-
-      //Create markers.
-      for (let i = 0; i < station_list.length; i++) {
-        const marker = new google.maps.Marker({
-          position: new google.maps.LatLng(station_list[i].latitude, station_list[i].longitude),
-          // icon: icons[features[i].type].icon,
-          map: map
+          center: new google.maps.LatLng(42.3163, -72.6403),
+          mapTypeId: google.maps.MapTypeId.ROADMA
         });
-
-        marker.setMap(map)
-        let j = i.toString();
-       
-        const contentString = `
         
-         <% if @stations.present? %>
-          <%= render(partial: "stations/row", object: @stations.find_by("20"), as: :station) %>
-        <% end %>
-        `
+        
+        $.getJSON("/GeoJSON",function(data, status){   
+            for (let i = 0; i < data.length; i++) {
+              const latLng = new google.maps.LatLng(data[i].geometry.coordinates[0], data[i].geometry.coordinates[1]);
+              const contentString = 
+                '<div class="alert-info">'+
+                '<br>Station: </br>'+ data[i].properties.name+
+                '<br>Duration : </br>'+
+                '<br>Biking distance: </br>'+ 
+                '<br>Duration : </br><br></br></div>'
+               
+                ;
 
-        const infowindow = new google.maps.InfoWindow({
-          content: contentString,
-          ariaLabel: station_list[i].name,
-        });
-
-        marker.addListener("click", () => {
-          infowindow.open({
-            anchor: marker,
-            map,
+              const infowindow = new google.maps.InfoWindow({
+                content: contentString
+                });
+              const marker = new google.maps.Marker({
+                      position: latLng,
+                      map: map,
+                    });
+              marker.addListener("click", () => {
+                    infowindow.open({
+                      anchor: marker,
+                      map,
+                    });
+              }); 
+            
+            };
           });
-        });
+        
 
-        // infoWindow.open(infoWindowOpenOptions)
-
-
-
-      }
-
-      // let marker = new google.maps.Marker(markerOptions);
-      // marker.setMap(map)
-
-      // //set up popup information window
-      // const infoWindowOptions = {
-      //   content: 'Information about the Location, including nearest bike station',
-      //   position: myLatLng,
-      //   maxWidth: 300
-      // }
-      // const infoWindow = new google.maps.InfoWindow(infoWindowOptions)
-      // const infoWindowOpenOptions = {
-      //   map: map,
-      //   anchor: marker,
-      //   shouldFocus: false
-      // }
       
-      // //can take html inside the info window to format
-      // infoWindow.setContent(`
-      //   <h3>Name of the Location</h3>
-      //   <div class='alert-info'><br>From: </br> <br>To: </br> <br>Biking distance: </br> <br>Duration : </br><br></br></div>      
-      //   <%=link_to "Ride", checkout_path, class: 'btn btn-info btn-lg' %>
-      //   <button class="btn btn-info btn-lg "><i class="fas fa-map-signs"></i>QR Code</button>
-      // `);
-
-      // infoWindow.open(infoWindowOpenOptions)
-
-
-
-      //initialize DirectionsService for route method
-      var directionsService = new google.maps.DirectionsService();
-
-      //create DirectionsRenderer for display
-      var directionsDisplay = new google.maps.DirectionsRenderer();
-
-      //put DirectionsRenderer on the map
-      directionsDisplay.setMap(map);
-
-      // const callback = function (results) {
-      //   for (let i = 0; i < results.features.length; i++) {
-      //     const coords = results.features[i].geometry.coordinates;
-      //     const latLng = new google.maps.LatLng(coords[1], coords[0]);
-
-      //     new google.maps.Marker({
-      //       position: latLng,
-      //       map: map,
-      //     });
-      //   }
-      // };
-      // window.callback = callback;
-
 
       //function for calculating the routes and displaying it on the map
       function calcRoute() {
@@ -224,8 +124,8 @@
               destination: document.getElementById("to").value,
               travelMode: google.maps.TravelMode.BICYCLING, //DRIVING,WALKING, BYCYCLING, TRANSIT
               unitSystem: google.maps.UnitSystem.IMPERIAL
-          }
-
+          };
+          var directionsService = new google.maps.DirectionsService();
           //pass the request to the route method
           directionsService.route(request, function (result, status) {
               if (status == google.maps.DirectionsStatus.OK) {
@@ -246,8 +146,10 @@
                   output.innerHTML = "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Error occured. Please Try Again.</div>";
               }
           });
-
       }
+
+        //function for calculating the routes and displaying it on the map
+     
 
       //create autocomplete for the inputs
       var input1 = document.getElementById("from");
@@ -255,55 +157,52 @@
 
       var input2 = document.getElementById("to");
       var autocomplete2 = new google.maps.places.Autocomplete(input2);
+     
+      function getMyLocation(){
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
 
-      // function getMyLocation(){
-      //     console.log('Entering getMyLocation');
-      //     if(navigator.geolocation){
-      //         navigator.geolocation.getCurrentPosition(displayCurrentLocation, displayError, {
-      //             maximumAge: 3000, 
-      //             // timeout: 5000, 
-      //             enableHighAccuracy: true 
-      //         });
-      //     }
-      //     console.log('Exiting getMyLocation');
-      // }
-      // function displayCurrentLocation(position){
-      //     console.log('Entering getCurrentLocation ' );
-      //     console.log(position.coords);
-      //     var lat = position.coords.latitude;
-      //     var lng = position.coords.longitude;
-      //     var mapOptions = {
-      //         center: new google.maps.LatLng(lat, lng),
-      //         zoom: 17
-      //     };
-      //     var map = new google.maps.Map(document.getElementById("map"),
-      //     mapOptions);
-      //     var latLng = new google.maps.LatLng(lat, lng);
-      //     var marker = new google.maps.Marker({
-      //                     position: latLng,
-      //                     map: map,
-      //                     title: 'Current location'
-      //                 });
-      //     marker.setMap(map);
-      //     console.log('Exiting getCurrentLocation');
-          
-      // }
-    //   function displayError(error){
-    //       console.log('Error in getting location');
-    //       console.log(error);
-    //   }
-    // google.maps.event.addDomListener(window, 'load', getMyLocation);
+              const myInfowindow = new google.maps.InfoWindow({
+                  content: "My current Loction"
+                });
+              const myMarker = new google.maps.Marker({
+                      position: pos,
+                      map: map,
+                      label: "A"
+                    });
+              myMarker.addListener("click", () => {
+                    myInfowindow.open({
+                      anchor: myMarker,
+                      map,
+                    });
+            }); 
+            map.setCenter(myLocation);
+            }, () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
 
-    //   function initMap(position){
-    //     let mapOptions = {
-    //       // center: {lat: lat,lng: lng},
-    //       center: {lat: 41.881832,lng:-87.623177},
-    //       zoom: 12
-    //     }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
 
-    //     let map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-    //   }
+    
+      getMyLocation();
 
    </script>
     <%# // <div id="container">

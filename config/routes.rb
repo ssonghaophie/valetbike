@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   match '/about', to: "welcome#about", via: :get
   match '/index', to: "welcome#index", via: :get
   match '/service', to: "welcome#service", via: :get
-  # match '/show', to: "stations#index", via: :get
+  match '/stations/:identifier', to: "stations#show", via: :get
   # match '/login', to: "stations#index", via: :get
   get 'sign_up',  to: 'users#new', via: :get
   post 'sign_up', to: 'users#create'
