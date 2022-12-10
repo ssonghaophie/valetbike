@@ -36,9 +36,28 @@ class CheckoutsController < ApplicationController
         #   format.js
         # end
       end
+    
+    # def create
+    #   @session = Stripe::Checkout::Session.create({
+    #     mode: 'subscription',
+    #     line_items: [{
+    #       quantity: 1,
+    #       price: 'price_1M6R3dAUWd5BoaTv4yxMB6Ks'
+    #     }],
+    #     success_url: YOUR_DOMAIN + '/success.html?session_id={CHECKOUT_SESSION_ID}',
+    #     cancel_url: YOUR_DOMAIN + '/cancel.html',
+    #   })
+    #   rescue StandardError => e
+    #     halt 400,
+    #       { 'Content-Type' => 'application/json' },
+    #       { 'error': { message: e.error.message } }.to_json
+    #   end
+    #   redirect_to @session.url, allow_other_host: true
+
+    # end
 
     def show
-        
+    
     #     current_user.processor = :stripe
     #     current_user.customer
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'membership', to: 'users#membership'
 
+  get 'template', to:'users#template'
   # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
   #get 'checkout/success', to: 'checkouts#success' 

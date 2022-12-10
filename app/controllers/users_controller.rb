@@ -62,5 +62,8 @@ class UsersController < ApplicationController
     
   end
 
-
+  def template
+  
+  end
+  
 end
