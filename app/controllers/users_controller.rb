@@ -62,5 +62,8 @@ class UsersController < ApplicationController
     
   end
 
+  def billing
+    @users = User.all.order(identifier: :asc)
+  end
 
 end

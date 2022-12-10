@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   get 'cancel.html.erb', to: 'checkouts#cancel'
   get 'success.html.erb', to: 'checkouts#success'
 
+  #membership
   get 'membership', to: 'users#membership'
+  get 'trip', to: 'users#trips'
+  get 'billing', to: 'users#billing'
 
   # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
   #get 'checkout/success', to: 'checkouts#success' 
-  get 'billing', to:'billing#show'
+  # match '/billing', to:'billing#show'
 
   match '/about', to: "welcome#about", via: :get
   match '/index', to: "welcome#index", via: :get
