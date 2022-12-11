@@ -28,38 +28,32 @@
 </div>
 
 <div class="row">
-  <div class="side">
+  <div class="side" style="text-align: center">
     <h2>Start Riding</h2>
     <%# search bar for station %>
-    <form class="form-horizontal">
-      <div class="form-group">
+    <div class="form">
         <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
-        <div class="col-xs-4">
         <input type="text" id="from" placeholder="Origin" class="form-control">
-        </div>
-      </div>
-      <div class="form-group">
         <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
-        <div class="col-xs-4">
-          <input type="text" id="to" placeholder="Destination" class="form-control">
-        </div>
-      </div>
-    </form>
-    <div class="form-group">
-      <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i>Search</button>
+        <input type="text" id="to" placeholder="Destination" class="form-control">
+    </div>
+    <div class="form">
+      <button class="btn btn-info btn-lg" onclick="navigation();" style="background-color: black; border-color:black; width: 100%">Search</button>
     </div>
     <%# put station list here %>
-    <div class="station-list">
+    <div class="vertical-menu">
+        <%# <div class="fakeimg" style="height:60px;">Image</div><br>
         <div class="fakeimg" style="height:60px;">Image</div><br>
-        <div class="fakeimg" style="height:60px;">Image</div><br>
-        <div class="fakeimg" style="height:60px;">Image</div>
-    <%# <%= render("stations")%> %>
+        <div class="fakeimg" style="height:60px;">Image</div> %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
     </div>  
   </div>
 
   <div class="main">
     <%# map %>
+    <div class="main" id="output"></div>
     <div class="main map" id="map"></div>
+    
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places" ></script>
     <script src="/GeoJSON" type="application/json"></script>
@@ -116,7 +110,6 @@
       //put DirectionsRenderer on the map
       directionsDisplay.setMap(map);
       
-
       //function for calculating the routes and displaying it on the map
       function navigation() {
           //create request
@@ -194,15 +187,15 @@
     }
   }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
-}
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(
+        browserHasGeolocation
+          ? "Error: The Geolocation service failed."
+          : "Error: Your browser doesn't support geolocation."
+      );
+      infoWindow.open(map);
+    }
 
 
    </script>
