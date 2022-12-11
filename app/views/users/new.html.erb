@@ -19,7 +19,7 @@
 
 <div class="row">
   <div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 33%;max-width: 33%;">
-  <%= form_for(@user)  do |f| %>
+  <%= form_for(@user, data: { turbo: false })  do |f| %>
 
     <%= render 'shared/error_messages', object: f.object%> 
     

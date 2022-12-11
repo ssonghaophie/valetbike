@@ -16,7 +16,7 @@
 
 <%# navigation bar%>
 <div class="navbar">
-  <%= link_to('Home', root_path, class: "active") %>
+  <div id="home"><%= link_to('Home', root_path, class: "active") %></div>
   <%= link_to('About', about_path) %>
   <%= link_to('Service', service_path)%>
   <% if logged_in? %>
@@ -69,11 +69,15 @@
     <%# import javascript file %>
     <script type="text/javascript">
         var myLocation;
-        const map = new google.maps.Map(document.getElementById("map"),{
+        var map = new google.maps.Map(document.getElementById("map"),{
           zoom: 15,
           center: new google.maps.LatLng(42.3163, -72.6403),
           mapTypeId: google.maps.MapTypeId.ROADMA
         });
+
+        $("#home").click(function(){
+          location.reload();
+        })
         
         $.getJSON("/GeoJSON",function(data, status){   
             for (let i = 0; i < data.length; i++) {
