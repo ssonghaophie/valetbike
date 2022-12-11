@@ -18,63 +18,11 @@ class CheckoutsController < ApplicationController
         })
         #redirect session.url, 303
         redirect_to @session.url, allow_other_host: true
-
-        # membership = Membership.find(params[:id])
-        # @session = Stripe::Checkout::Session.create({
-        #   payment_method_types: ['card'],
-        #   line_items: [{
-        #     name: membership.name,
-        #     amount: membership.price,
-        #     currency: "usd",
-        #     quantity: 1
-        #   }],
-        #   mode: 'payment',
-        #   success_url: root_url,
-        #   cancel_url: root_url,
-        # })
-        # respond_to do |format|
-        #   format.js
-        # end
       end
     
-    # def create
-    #   @session = Stripe::Checkout::Session.create({
-    #     mode: 'subscription',
-    #     line_items: [{
-    #       quantity: 1,
-    #       price: 'price_1M6R3dAUWd5BoaTv4yxMB6Ks'
-    #     }],
-    #     success_url: YOUR_DOMAIN + '/success.html?session_id={CHECKOUT_SESSION_ID}',
-    #     cancel_url: YOUR_DOMAIN + '/cancel.html',
-    #   })
-    #   rescue StandardError => e
-    #     halt 400,
-    #       { 'Content-Type' => 'application/json' },
-    #       { 'error': { message: e.error.message } }.to_json
-    #   end
-    #   redirect_to @session.url, allow_other_host: true
-
-    # end
 
     def show
-    
-    #     current_user.processor = :stripe
-    #     current_user.customer
 
-    #     @checkout_session = current_user.payment_processor.checkout(
-    #         mode: "payment",
-    #         line_items: "price_1M6fT6AUWd5BoaTvwXfcNBzG"
-    #     )
-
-    #     current_user.set_payment_processor :stripe
-    #     current_user.payment_processor.customer
-
-    #    @checkout_session = current_user.payment_processor.checkout(
-    #            mode: 'payment',
-    #             #list of products
-    #            line_items: 'price_1M6fT6AUWd5BoaTvwXfcNBzG',
-    #         #    success_url: checkout_sucess_url,
-    #        )
     end
 
     def success
