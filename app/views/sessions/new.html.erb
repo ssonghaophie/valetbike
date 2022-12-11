@@ -28,8 +28,8 @@
 <div class = "container">
   <div class="row">
     <div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 33%;max-width: 33%;">
-      <%= form_for(:session, url: sign_in_path) do |f| %>
-        <% if flash.now[:danger] &&@session!=nil %>
+      <%= form_for(:session, url: sign_in_path, data: { turbo: false }) do |f| %>
+        <% if flash.now[:danger] && @session!=nil %>
           <p>Invalid email/password!</p>
         <% end %>
         <div class="col">
