@@ -14,10 +14,10 @@
     <div class="inner_header">
       <div class="logo_container">
         <img class= "logo" src="assets/bike.png" alt="valet bike logo">
-        <a class="navbar_logo" href="index.html"><h1>VALET<span>BIKE</span></h1></a>
+        <a class="navbar_logo" href="/"><h1>VALET<span>BIKE</span></h1></a>
       </div>
       <ul class="navigation">
-        <%= link_to('Home', index_path, class: 'index-link') %> 
+       <%= link_to('Home', root_path, class: 'index-link') %> 
         <%= link_to('Service', service_path, class: 'index-link')  %>
 
         <% if logged_in? %>
