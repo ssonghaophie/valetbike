@@ -156,8 +156,11 @@
 
       var input2 = document.getElementById("to");
       var autocomplete2 = new google.maps.places.Autocomplete(input2);
-     
+      
       function getMyLocation(){
+         var myInfowindow = new google.maps.InfoWindow({
+            content: "My current Loction"
+         });
          if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
               const pos = {
@@ -165,9 +168,9 @@
                 lng: position.coords.longitude,
               };
 
-              const myInfowindow = new google.maps.InfoWindow({
-                  content: "My current Loction"
-                });
+              // myInfowindow = new google.maps.InfoWindow({
+              //     content: "My current Loction"
+              //   });
               const myMarker = new google.maps.Marker({
                       position: pos,
                       map: map,
@@ -182,12 +185,12 @@
             }); 
             map.setCenter(myLocation);
             }, () => {
-              handleLocationError(true, infoWindow, map.getCenter());
+              handleLocationError(true, myInfowindow, map.getCenter());
             }
       );
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, myInfowindow, map.getCenter());
     }
   }
 

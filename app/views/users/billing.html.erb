@@ -29,9 +29,7 @@
   
   <div class="row">
   <div class="side">
-    <h2><%= @user.first_name%> <%= @user.last_name%></h2>
-
-    <%# list %>
+    <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
     <div class="station-list">
         <div class="fakeimg" style="height:60px;"><%= link_to('Account', current_user) %></div><br>
         <div class="fakeimg" style="height:60px;"><%= link_to('Billing', billing_path) %></div><br>
@@ -43,8 +41,12 @@
 
 
   <div class="main"> 
-        <span class="title">Billing</span>
-          <p><%=link_to "Edit", edit_user_path, class: 'btn btn-info btn-lg' %></p>
+        <form method="POST" action="/create-customer-portal-session">
+          <button type="submit">Manage billing</button>
+        </form>
+        <th>Subscribe new Membership</th>
+        <td><%= link_to('Membership', membership_path ) %></td>
+        </tr>
 
     
     </div>
