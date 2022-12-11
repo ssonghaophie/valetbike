@@ -54,10 +54,17 @@ class UsersController < ApplicationController
     @user = User.find(param[:id])
   end
 
-  def trips
-    @trips = Trip.where(user_id: current_user.id)
-  end
+  def create_customer_portal
+    Stripe.api_key = 'sk_test_51MA2XxLFQu7F5KVbzeELWoGQJseEpJVj7iwsWWhquXTWdFenPsCJFcoCmUkKoDNMj6mFfHOpHv4bBiHXUtnYMRv9007TQg6Smz'
 
+
+    @session = Stripe::BillingPortal::Session.create({
+      customer: @user.stripe_customer_id,
+      return_url: 'http://localhost:3000',
+    })
+
+    redirect @session.url
+  end
     
   private
   

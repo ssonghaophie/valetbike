@@ -101,9 +101,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_093943) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
-    t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "docked_bike_count"
     t.float "latitude"
     t.float "longitude"
   end
@@ -125,16 +125,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_093943) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "email", null: false
-    t.string "trips"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "password"
+    t.string "email"
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at", precision: nil
+    t.datetime "reset_sent_at"
+    t.string "stripe_customer_id"
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"

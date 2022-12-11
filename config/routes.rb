@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   get 'success.html.erb', to: 'checkouts#success'
 
   get 'membership', to: 'membership#show'
-  post 'create-checkout-session-membership', to: 'membership#create'
-  get 'cancel.html.erb', to: 'membership#cancel'
-  get 'success.html.erb', to: 'membership#success'
   #user profile
   get 'membership', to: 'users#membership'
   get 'mytrip', to: 'users#trips'
   get 'billing', to: 'users#billing'
+  post "create-customer-portal-session", to: 'users#create_customer_portal'
+
   get 'template', to:'users#template'
   # get 'checkout', to: 'checkouts#create-checkout-session'
   #successfully purchase the product
