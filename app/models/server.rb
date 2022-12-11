@@ -23,5 +23,5 @@ post '/create-checkout-session' do
     success_url: YOUR_DOMAIN + 'app/views/checkouts/success.html.erb',
     cancel_url: YOUR_DOMAIN + 'app/views/checkouts/cancel.html.erb',
   })
-#   redirect session.url, 303
+  redirect session.url, 303
 end

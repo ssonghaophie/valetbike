@@ -1,7 +1,42 @@
-<h1>Edit Info</h1>
 
-<div class="row">
-  <div class="col-md-4 " style="width: 100%; flex: 0 0 100%;max-width: 100%;">
+  <%# header and slogan %>
+  <div class=header_out></div>
+  <div class="header">
+    <h1>Ride With the Wind, Share Your Freedom</h1>
+  </div>
+
+
+  <%# navigation bar%>
+  <div class="navbar">
+    <%= link_to('Home', root_path) %>
+    <%= link_to('About', about_path) %>
+    <%= link_to('Service', service_path)%>
+    <% if logged_in? %>
+      <%= link_to('Log Out', logout_path, class: "right") %>
+      <%= link_to('Profile', current_user, class: "right") %>
+      <% else %>
+      <%= link_to('Log in', sign_in_path, class: "right") %>
+      <%= link_to('Sign up', sign_up_path, class: "right") %>
+    <% end %>
+  </div>
+
+  <div class="row">
+  <div class="side">
+    <h2><%= @user.first_name%> <%= @user.last_name%></h2>
+
+    <%# list %>
+    <div class="station-list">
+        <div class="fakeimg" style="height:60px;"><%= link_to('Account', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Billing', billing_path) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Membership', membership_path) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('My Trip', trip_path ) %></div>
+    </div>  
+  </div>
+
+
+<div class="main">
+  <h1>Edit Info</h1>
+  <div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 33%;max-width: 33%;">
   <%= form_for(@user)  do |f| %>
 
     <%= render 'shared/error_messages', object: f.object%> 

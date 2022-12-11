@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'cancel.html.erb', to: 'checkouts#cancel'
   get 'success.html.erb', to: 'checkouts#success'
 
-  #membership
+  #user profile
   get 'membership', to: 'users#membership'
   get 'trip', to: 'users#trips'
   get 'billing', to: 'users#billing'

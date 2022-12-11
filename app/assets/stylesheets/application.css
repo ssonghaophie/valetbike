@@ -14,7 +14,7 @@
  *= require_self
  */
 
- #container {
+ /* #container {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -66,4 +66,4 @@
 
  #Services {
   text-align: center;
- }
+ } */

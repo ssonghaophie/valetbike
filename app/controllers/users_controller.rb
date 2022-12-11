@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def billing
-    @users = User.all.order(identifier: :asc)
+    @user = User.find(params[:id])
   end
 
 end

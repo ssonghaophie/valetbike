@@ -1,7 +1,30 @@
 
-<h1>Sign in</h1>
+<%# header and slogan %>
+<div class=header_out></div>
+<div class="header">
+  <h1>Ride With the Wind, Share Your Freedom</h1>
+</div>
 
-<%= link_to('Home', root_path) %><br />
+
+<%# navigation bar%>
+<div class="navbar">
+  <%= link_to('Home', root_path, class: "active") %>
+  <%= link_to('About', about_path) %>
+  <%= link_to('Service', service_path)%>
+  <% if logged_in? %>
+    <%= link_to('Log Out', logout_path, class: "right") %>
+    <%= link_to('Profile', current_user, class: "right") %>
+    <% else %>
+    <%= link_to('Log in', sign_in_path, class: "right") %>
+    <%= link_to('Sign up', sign_up_path, class: "right") %>
+  <% end %>
+</div>
+
+
+
+<div class="main">
+<h1 style="text-align: center">Sign in</h1>
+<h2 style="text-align: center"><%= link_to('Home', root_path) %></h2><br/>
 <div class = "container">
   <div class="row">
     <div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 33%;max-width: 33%;">
@@ -27,4 +50,7 @@
     </div>
   </div>
 </div>
+</div>
+
+<div class="footer">Footer</div>
 
