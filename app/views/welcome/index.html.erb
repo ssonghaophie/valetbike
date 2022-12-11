@@ -54,7 +54,7 @@
         <div class="fakeimg" style="height:60px;">Image</div><br>
         <div class="fakeimg" style="height:60px;">Image</div><br>
         <div class="fakeimg" style="height:60px;">Image</div>
-    <%# <%= render(partial: "stations/row", collection: @stations, as: :station)%>
+    <%# <%= render("stations")%> %>
     </div>  
   </div>
 
@@ -78,6 +78,7 @@
         $("#home").click(function(){
           location.reload();
         })
+        getMyLocation();
         
         $.getJSON("/GeoJSON",function(data, status){   
           for (let i = 0; i < data.length; i++) {
@@ -97,6 +98,7 @@
                       map: map,
                     });
               marker.addListener("click", () => {
+                    map.setCenter(latLng);
                     infowindow.open({
                       anchor: marker,
                       map,
@@ -159,16 +161,17 @@
       var autocomplete2 = new google.maps.places.Autocomplete(input2);
      
       function getMyLocation(){
-         if (navigator.geolocation) {
+        var myInfoWindowmyInfoWindow = new google.maps.InfoWindow({
+                  content: "My current Loction"
+                });
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
               const pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
               };
 
-              const myInfowindow = new google.maps.InfoWindow({
-                  content: "My current Loction"
-                });
+               
               const myMarker = new google.maps.Marker({
                       position: pos,
                       map: map,
@@ -176,19 +179,19 @@
                     });
               myMarker.addListener("click", () => {
                     map.setCenter(pos);
-                    myInfowindow.open({
+                    myInfoWindow.open({
                       anchor: myMarker,
                       map,
                     });
             }); 
-            map.setCenter(myLocation);
+            map.setCenter(pos);
             }, () => {
-              handleLocationError(true, infoWindow, map.getCenter());
+              handleLocationError(true, myInfoWindow, map.getCenter());
             }
       );
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, myInfoWindow, map.getCenter());
     }
   }
 
@@ -202,8 +205,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-    
-      getMyLocation();
 
    </script>
    
