@@ -7,14 +7,6 @@
 </head>
 
 <body>
-
-  <%# header and slogan %>
-  <div class=header_out></div>
-  <div class="header">
-    <h1>Ride With the Wind, Share Your Freedom</h1>
-  </div>
-
-
   <%# navigation bar%>
   <div class="navbar">
     <%= link_to('Home', root_path) %>
@@ -29,6 +21,12 @@
     <% end %>
   </div>
 
+   <%# header and slogan %>
+  <div class=header_out></div>
+  <div class="header">
+    <h1>Ride With the Wind, Share Your Freedom</h1>
+  </div>
+  
   <div class="row">
   <div class="side">
     <h2><%= @user.first_name%> <%= @user.last_name%></h2>
