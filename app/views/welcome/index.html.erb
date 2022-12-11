@@ -15,6 +15,7 @@
   <% if logged_in? %>
     <%= link_to('Log Out', logout_path, class: "right") %>
     <%= link_to('Profile', current_user, class: "right") %>
+    <%= link_to('Return My Bike', mytrip_path , class: "right") %>
     <% else %>
     <%= link_to('Log in', sign_in_path, class: "right") %>
     <%= link_to('Sign up', sign_up_path, class: "right") %>

@@ -1,3 +1,7 @@
 <div class="<%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
-  <%= bike.identifier %> <%= bike.current_station_id %>
+  No. <%= bike.identifier %>  available:<%=bike.in_use %> 
+
+  
+<%=link_to "Ride", checkout_path(bike)%>
+  
 </div>

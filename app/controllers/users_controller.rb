@@ -53,6 +53,11 @@ class UsersController < ApplicationController
   def delete
     @user = User.find(param[:id])
   end
+
+  def trips
+    @trips = Trip.where(user_id: current_user.id)
+  end
+
     
   private
   

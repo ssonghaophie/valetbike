@@ -16,6 +16,8 @@ class User < ApplicationRecord
   #   }
   # end
 
+  has_many :trips, class_name: :Trips, foreign_key: :user_id, primary_key: :trip_id
+  
   
     attr_accessor  :activation_token, :reset_token, :remember_token
 

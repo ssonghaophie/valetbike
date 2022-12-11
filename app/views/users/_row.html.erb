@@ -1,0 +1,23 @@
+<div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
+<br>start_station_id:
+    <%=trip.start_station_id%></br>
+    <br>end_station_id:
+    <%=trip.end_station_id%></br>
+    <br>
+    trip id:
+    <%=trip.trip_id%></br>
+    <br>
+    bike id:
+    <%=trip.bike_id%></br>
+    <br>
+    start time:
+    <%=trip.start_time%></br>
+    <br>end time:
+    <%=trip.end_time%></br>
+
+    <%if trip.end_time==nil%>
+    <div><%=link_to "Return Bike", edit_trip_path(trip)%> </div>
+  
+<%end%>
+</div>
+

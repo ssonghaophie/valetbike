@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-
+  require 'securerandom'
     #index of the trip
     def index
       @trips = Trip.all.order(identifier: :asc)
@@ -8,10 +8,6 @@ class TripsController < ApplicationController
     #show the trip observation with given parameters
     def show 
       @trip = Trip.find(params[:id])
-      if @trip
-        redirect_to trip_path
-      else
-        render('new')
     end
     
     #make new trip
@@ -23,6 +19,7 @@ class TripsController < ApplicationController
     #create new trip
     def create
       @trip = Trip.new(trip_params)
+      @trip.trip_id=SecureRandom.base64(8).gsub("/","_").gsub(/=+$/,"")
       if @trip.save
         redirect_to trip_path
       else
@@ -40,10 +37,11 @@ class TripsController < ApplicationController
   
     def update
       @trip = Trip.find(params[:id])
+      @trip.end_time=Time.now()
+      @trip.end_station_id = :end_station_id
       if @trip.update(trip_params)
-        redirect_to trip_path(@trip)
-      else
-        render('edit')
+        flash[:success] = "Bike returned successfully"
+        redirect_to root_path
       end
     end
   
@@ -58,23 +56,20 @@ class TripsController < ApplicationController
       redirect_to trip_path
     end
   
-    private
+  private
   
-    def trip_params
-      params.require(:trip).permit(
-        :tripId,
-        :status,
-        :startTime,
-        :endTime,
-        :startStation,
-        :endStation,
-        :date,
-        :review,
-        :description
-      )
-    end
-
-
-
+  def trip_params
+    params.require(:trip).permit(
+      :user_id,
+      :trip_id,
+      :bike_id,
+      :start_time,
+      :end_time,
+      :start_station_id,
+      :end_station_id
+    )
   end
+  end
+  
+
   

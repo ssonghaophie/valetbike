@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_093943) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "in_use", default: false
   end
 
   create_table "pay_charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -108,14 +109,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "trip_id"
-    t.string "user_id"
-    t.integer "current_station_id"
-    t.integer "startTime"
-    t.integer "endTime"
+    t.string "user_id", null: false
+    t.integer "start_station_id", null: false
+    t.integer "end_station_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bike_id"
+    t.string "trip_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

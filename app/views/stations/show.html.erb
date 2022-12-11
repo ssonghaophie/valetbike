@@ -37,9 +37,10 @@
 
 
   <h2>current station</h2>
-  <div class="flexbox vertical stretch">
+  
           <% if @stations.present? %>
-            <%= render(partial: "stations/row",object: @stations, as: :station) %>
+            <%= render(partial: "stations/row", object: @stations, as: :station) %>
+            <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %>
           <% else %>
           <div class="empty">
             No stations found.
