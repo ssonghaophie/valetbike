@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post 'create-checkout-session-membership', to: 'membership#create'
   get 'cancel.html.erb', to: 'membership#cancel'
   get 'success.html.erb', to: 'membership#success'
+  #user profile
+  get 'membership', to: 'users#membership'
+  get 'trip', to: 'users#trips'
+  get 'billing', to: 'users#billing'
 
   get 'template', to:'users#template'
   # get 'checkout', to: 'checkouts#create-checkout-session'

@@ -28,7 +28,7 @@
  </div>
 </header>-->
 
-<nav class ="header">
+<%# <nav class ="header">
     <div class="navbar_logo">
         <a class="logo" href="index.html"><h1>VALET<span>BIKE</span></h1></a>
     </div>
@@ -41,4 +41,18 @@
         <a href="/sign_up" role="button"><li>SIGN UP</li></a>
         </ul>
     </div>
-</nav>
+</nav> %>
+
+
+<div class=header_out></div>
+<div class="header">
+  <h1>My Website</h1>
+  <p>A <b>responsive</b> website created by me.</p>
+</div>
+
+<div class="navbar">
+  <a href="#" class="active"><%= link_to('About', about_path) %></a>
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#" class="right">Link</a>
+</div>

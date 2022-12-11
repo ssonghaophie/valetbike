@@ -1,48 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<%# link to css and bootstrap stylesheet %>
 <head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="assets/service.css">
-<title>Our service</title>
+      <%# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> %>
+      <title>ValetBike: Small Freedom with Two Wheels</title>
 </head>
 
-<div class=header_out></div>
-  <div class ="header">
-    <div class="inner_header">
-      <div class="logo_container">
-        <a class="navbar_logo" href="index.html"><h1>VALET<span>BIKE</span></h1></a>
-      </div>
-      <ul class="navigation">
-        <%= link_to('Home', index_path, class: 'index-link') %> 
-        <%= link_to('About', about_path, class: 'index-link')  %>
+<body>
 
-        <% if logged_in? %>
-          <%= link_to('Profile', current_user, class: 'index-link') %>
-          <%= link_to('Log Out', logout_path, class: 'index-link') %>
-          
-        <% else %>
-          <%= link_to('Log in', sign_in_path, class: 'index-link') %>
-          <%= link_to('Sign up', sign_up_path, class: 'index-link') %>
-        <% end %>
-      </ul>
+  <%# header and slogan %>
+  <div class=header_out></div>
+  <div class="header">
+    <h1>Ride With the Wind, Share Your Freedom</h1>
+  </div>
+
+
+  <%# navigation bar%>
+  <div class="navbar">
+    <%= link_to('Home', root_path) %>
+    <%= link_to('About', about_path) %>
+    <%= link_to('Service', service_path, class: "active")%>
+    <% if logged_in? %>
+      <%= link_to('Profile', current_user, class: "right") %>
+      <%= link_to('Log Out', logout_path, class: "right") %>
+      <% else %>
+      <%= link_to('Log in', sign_in_path, class: "right") %>
+      <%= link_to('Sign up', sign_up_path, class: "right") %>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="side">
+      <h1>Service </h1>
+      <h2>FAQ</h2>
+      <h2>Contact:</h2>
+      <h3>ssong25@smith.edu | (413) 210-8825</h3>
+      <div class="fakeimg" style="height:60px;">Image</div><br>
+      <div class="fakeimg" style="height:60px;">Image</div><br>
+      <div class="fakeimg" style="height:60px;">Image</div>
     </div>
-  <div class="panel_for_welcome_message">
-    <div class="welcome_message"> <h1>Service </h1></div>  
-  <div> 
+    <div class="main">
+      <h2>How do you unlock the bike?</h2>
+      <p>Use button or something just writing random lines</p>
+      <br>
+      <h2>Q2</h2>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+  </div>
 
-<div><h2>contact:</h2></div>
-<div class="skills">
-        <h2>FAQ</h2>
-        <div class="skill-row">
-          <h3>Q1</h3>
-          <p class= "language-skill-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a nunc est. Ut blandit arcu massa, eget mollis risus interdum a. Aliquam non turpis non dui gravida sodales. Donec nec dolor gravida, accumsan mauris egestas, blandit mauris. In et scelerisque turpis. Morbi luctus egestas rhoncus. Morbi quis egestas ligula, feugiat tempor mauris. Sed gravida laoreet fermentum. Proin et est malesuada, mollis elit vel, tincidunt ipsum. In euismod euismod malesuada</p>
-        </div>
-        <div class="skill-row">
-          <h3>Q2</h3>
-          <p class= "programming-skill-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a nunc est. Ut blandit arcu massa, eget mollis risus interdum a. Aliquam non turpis non dui gravida sodales. Donec nec dolor gravida, accumsan mauris egestas, blandit mauris. In et scelerisque turpis. Morbi luctus egestas rhoncus. Morbi quis egestas ligula, feugiat tempor mauris. Sed gravida laoreet fermentum. Proin et est malesuada, mollis elit vel, tincidunt ipsum. In euismod euismod malesuada.</p>
-        </div>
-      </div>
-      <hr>
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
 
 </body>
+
+
+
+
+
+
+
+
+
+
+  
 </html>
