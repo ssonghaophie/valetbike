@@ -5,7 +5,15 @@
       <%# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> %>
       <title>ValetBike: Small Freedom with Two Wheels</title>
 </head>
-
+<script>function toggleText(id) {
+  var text = document.getElementById(id);
+  if (text.style.display === "none") {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+</script>
 <body>
 
   <%# navigation bar%>
@@ -38,12 +46,63 @@
       <div class="fakeimg" style="height:60px;">Image</div><br>
       <div class="fakeimg" style="height:60px;">Image</div>
     </div>
-    <div class="main">
-      <h2>How do you unlock the bike?</h2>
-      <p>Use button or something just writing random lines</p>
+    <div class="main"> 
+      <h1>Most frequently asked questions</h1> 
       <br>
-      <h2>Q2</h2>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <h2>Membership</h2>
+      <button type='button' onclick="toggleText('Q1-M')"><h2>Q1. Who can become our member?</h2></button>
+      <p id='Q1-M' style='display: none'>You must be 16 years old to be eligible to use our system. Memberships are not shared, you must keep your membership secure.</p>
+      <br> 
+
+      <button type='button' onclick="toggleText('Q2-M')"><h2>Q2. How to unlock the bike?</h2></button>
+      <p id='Q2-M' style='display: none'>In the website, choose the station and simply click ride to unlock the bikes!</p> 
+      <br>
+
+      <button type='button' onclick="toggleText('Q3-M')"><h2>Q3. Why there are additional fees charged even though I own a membership?</h2></button>
+      <p id='Q3-M' style='display: none'>Overtime fees ensure users return their bikes on time to provide accessible service to all residents and visitors. 
+      We appreciate your prompt return of the bike for a better experience.</p> 
+      <br>
+
+      <button type='button' onclick="toggleText('Q4-M')"><h2>Q4. Can I rent the bike without being a member?</h2></button>
+      <p id='Q4-M' style='display: none'>Yes. You don't need a membership to access our system. With a one-time pass, 
+      you can rent a bike immediately without registering or becoming a member.</p> 
+      <br>
+
+      <h2>Ride</h2>
+      <button type='button' onclick="toggleText('Q1-R')"><h2>Q1. Where can I ride my bike?</h2></button>
+      <p id='Q1-R' style='display: none'>You can ride anywhere with the bike! But please remember to return the bike within the time of your plan.</p>
+      <br> 
+
+      <button type='button' onclick="toggleText('Q2-R')"><h2>Q2. How long can I ride the bike?</h2></button>
+      <p id='Q2-R' style='display: none'>The membership allows you to rent bikes for up to 60 minutes. 
+      A single pay-per-ride provides you with 40 mins ride. And If you want more time, we also provide a 2-hour pass. 
+      Returning the bike late with cause additional fees of $0.25 per minute. If the bike is not returned over 24 hours, it will be considered stolen, and you will be charged $1,000 on your credit card.</p> 
+      <br>
+
+      <h2>Bike</h2>
+      <button type='button' onclick="toggleText('Q1-B')"><h2>Q1. How do I take the bike out of a dock?</h2></button>
+      <p id='Q1-B' style='display: none'>The number to unlock the bike will be generated if you purchase the pass at the station. The bike will be unlocked by entering the number of the available bike, and you have the 30s to take it off the dock. After the 30s, if the bike is not taken off, you will need to repeat the process.
+      If you have a membership on your mobile account, you can use your mobile phone to scan the QR code to unlock the bike.</p>
+      <br> 
+
+      <button type='button' onclick="toggleText('Q2-B')"><h2>Q2. Do I have to return the bike to the same station I rented? </h2></button>
+      <p id='Q2-B' style='display: none'>No. You can return bikes to any station within the riding time.</p> 
+      <br>
+
+      <h2>Station</h2>
+      <button type='button' onclick="toggleText('Q1-S')"><h2>Q1. What do I do if there are no available docks to return the bike?</h2></button>
+      <p id='Q1-S' style='display: none'>If the docking station is full, you can request free additional time (15 minutes) for returning the bike to another station.</p>
+      <br> 
+
+      <button type='button' onclick="toggleText('Q2-S')"><h2>Q2. What should I do if there is no available bikes at the station? </h2></button>
+      <p id='Q2-S' style='display: none'>By clicking the map, you can find the nearest stations with the bike count to rent a bike.</p> 
+      <br>
+
+      <h1>Didn't find your question?</h1>
+      <h1>Send your question to example@valleybike.org and we will respond you shortly</h1>
+      
+
+
     </div>
   </div>
 

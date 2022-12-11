@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_044856) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "stripe_customer_id"
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
