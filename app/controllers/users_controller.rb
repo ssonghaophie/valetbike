@@ -62,5 +62,8 @@ class UsersController < ApplicationController
     
   end
 
+  def billing
+    @user = User.find(params[:id])
+  end
 
 end

@@ -1,6 +1,8 @@
 
-<h1> Sign up</h1>
-
+<div class=header_out></div>
+  <div class="header">
+    <h1>Ride With the Wind, Share Your Freedom</h1>
+  </div>
 <div>      
 <ul class = "navbar">
   <%= link_to('Home', root_path ) %>
@@ -8,11 +10,16 @@
 </ul>
 </div>
 
+<div class="main">
+<h1 style="text-align:center"> Sign up</h1>
+
+
+
 
 
 <div class="row">
-  <div class="col-md-4 " style="width: 100%; flex: 0 0 100%;max-width: 100%;">
-  <%= form_for(@user, data:{turbo: false})  do |f| %>
+  <div class="col-md-5 col-md-offset-4" style="width: 33%; flex: 0 0 33%;max-width: 33%;">
+  <%= form_for(@user, data: { turbo: false })  do |f| %>
 
     <%= render 'shared/error_messages', object: f.object%> 
     
@@ -64,3 +71,6 @@
     </div>
 </div>
 
+</div>
+
+<div class="footer">Footer</div>

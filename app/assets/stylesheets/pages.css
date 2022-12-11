@@ -2,7 +2,7 @@
 /*       Universal Page Style       */
 /************************************/
 
-.page-section {
+/* .page-section {
   max-width: 80em;
   width: 100%;
   margin-top: 4em;
@@ -32,14 +32,14 @@
 
 .record-row.odd {
   background: var(--dark-white-color);
-}
+} */
 
 
 /***********************************/
 /*         Responsiveness          */
 /***********************************/
 
-@media (max-width:48em) {
+/* @media (max-width:48em) {
   .page-section {
     margin-top: 3em;
   }
@@ -49,4 +49,4 @@
     margin-bottom: .6em;
   }
 
-}
+} */

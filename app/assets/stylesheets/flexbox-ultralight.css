@@ -7,11 +7,11 @@
 /**************************************************************/
 
 .flexbox {
-  display: -webkit-box;   /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
-  display: -moz-box;      /* OLD: Firefox (buggy) */
-  display: -ms-flexbox;   /* MID: IE 10 */
-  display: -webkit-flex;  /* NEW, Chrome 21+ */
-  display: flex;          /* NEW: Opera 12.1, Firefox 22+ */
+  display: -webkit-box;   
+  display: -moz-box;      
+  display: -ms-flexbox;   
+  display: -webkit-flex; 
+  display: flex;         
 }
 
 .flexbox.horizontal {
@@ -50,7 +50,7 @@
   flex-direction: column-reverse;
 }
 
-.flexbox.center {
+/* .flexbox.center {
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-flex-align: center;
@@ -120,4 +120,4 @@
   -webkit-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around;
-}
+}  */

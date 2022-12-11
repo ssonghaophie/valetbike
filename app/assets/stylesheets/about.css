@@ -2,11 +2,13 @@
     font-size: 20px;
 }
 .column {
-    float: left;
     width: 25%;
     margin-bottom: 16px;
     padding: 0 16px;
     font-size: 15px;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
   }
   
   /* Display the columns below each other instead of side by side on small screens */
@@ -54,20 +56,20 @@
     width: 100%;
     height: 150px;
     display: block;
-    background-color: #97DECE;
+    background-color: rgb(199, 221, 240);
 }
 
 .welcome_message {
     width: 100%;
     height: 100%;
     display: block;
-    background-color: #97DECE;
+    background-color: rgb(199, 221, 240);
 }
 
 .welcome_message h1 {
     height: 100%;
     vertical-align: middle;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     font-weight: 400;
 }
