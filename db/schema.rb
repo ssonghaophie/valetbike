@@ -135,7 +135,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_093943) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
+<<<<<<< HEAD
     t.string "stripe_customer_id"
+=======
+>>>>>>> 053891637d958dee05e56ddf124987076a5c94f0
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
