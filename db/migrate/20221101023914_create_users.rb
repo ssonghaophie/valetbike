@@ -7,6 +7,13 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email, null: false
       t.string :password_digest
       t.string :trips
+      t.string :plan
+      t.datetime :created_at, precision: 6, null: false
+      t.datetime :updated_at, precision: 6, null: false
+      t.string :subscription_status, default: "incomplete"
+      t.index [:email], name: "index_users_on_email", unique: true
+      t.index [:stripe_customer_id],
+
       t.timestamps
     end
   end

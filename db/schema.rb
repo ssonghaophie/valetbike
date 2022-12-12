@@ -127,22 +127,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_093943) do
     t.string "username"
     t.string "email", null: false
     t.string "trips"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at", precision: nil
-<<<<<<< HEAD
     t.string "stripe_customer_id"
-=======
->>>>>>> 053891637d958dee05e56ddf124987076a5c94f0
+    t.string "plan" # lookup_key
+    t.string "session_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "subscription_status", default: "incomplete"
+    t.index ["email"], name: :index_users_on_email, unique: true
+    t.index ["stripe_customer_id"]
   end
 
-  add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
-  add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"
-  add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
-  add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+
 end

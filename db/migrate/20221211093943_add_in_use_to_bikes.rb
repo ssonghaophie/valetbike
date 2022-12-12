@@ -4,5 +4,6 @@ class AddInUseToBikes < ActiveRecord::Migration[7.0]
     add_column :trips, :bike_id, :integer
     add_column :trips, :trip_id, :string
     change_column :trips, :user_id, :string
+    
   end
 end
