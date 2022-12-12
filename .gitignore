@@ -40,3 +40,5 @@
 /node_modules
 
 .history
+
+/config/credentials.yml.enc

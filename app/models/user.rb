@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   pay_customer
 
-  validates_presence_of   :stripe_customer_id
+  validates_uniqueness_of  :email
+
+  # validates_presence_of   :stripe_customer_id
 
   #  pay_customer stripe_attributes: :stripe_attributes
   # pay_customer stripe_attributes: ->(pay_customer) { metadata: { { user_id: pay_customer.owner_id } } }
@@ -92,6 +94,13 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
+
+
+  after_create do
+    customer = Stripe::Customer.create(name: self.username, email: self.email)
+    update(stripe_customer_id: customer.id)
+  end 
+
   private
 
     # Converts email to all lower-case.
@@ -104,10 +113,6 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-
-    after_create do
-      customer = Stripe::Customer.create(email: self.email)
-      update(stripe_customer_id: customer.id)
-    end    
+  
 
 end

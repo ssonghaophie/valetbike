@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   get 'membership', to: 'users#membership'
   get 'mytrip', to: 'users#trips'
   get 'billing', to: 'users#billing'
-  post "create-customer-portal-session", to: 'users#create_customer_portal'
+  post 'billing_portal_create', to: 'billing_portal#create'
+  resources :customer_portal_sessions, only: [:create]
 
   get 'template', to:'users#template'
-  # get 'checkout', to: 'checkouts#create-checkout-session'
+  get 'checkout', to: 'checkouts#show'
   #successfully purchase the product
   #get 'checkout/success', to: 'checkouts#success' 
   # match '/billing', to:'billing#show'
