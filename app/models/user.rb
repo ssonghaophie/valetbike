@@ -104,7 +104,7 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-
+  
     after_create do
       customer = Stripe::Customer.create(email: self.email)
       update(stripe_customer_id: customer.id)

@@ -10,52 +10,18 @@
   }
 
 
-
   /* Style the body */
   body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
   }
 
-  /* div.transbox {
-    padding:20px;
-    width:100%;
-    position:relative;
-    background: rgb(204, 204, 204); Fallback for older browsers without RGBA-support */
-    /* background: rgba(185, 191, 221, 0.5);
-    
-  } */
-
-
-  /* .header { 
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-size: 100%;
-    background-image: url("bike-header.jpeg");
-    background-size: cover;
-} */
-
-/* .header::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(0,0,0,0.25);
-} */
-
 
   /* Header/logo Title */
   .header {
     background-image: url("bike-header.jpeg");
     background-size: 100%;
-    padding: 80px;
+    padding: 70px;
     text-align: center;
     /* background: #9fbcd6; */
     color: rgb(40, 42, 74);
@@ -74,6 +40,7 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    margin-bottom: 0px;
   }
   
   /* Style the navigation bar links */
