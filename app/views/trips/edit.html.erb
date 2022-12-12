@@ -25,3 +25,50 @@
 <%else%>
     <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
 <%end%>
+
+
+<!DOCTYPE html>
+<html>
+<%# link to css and bootstrap stylesheet %>
+<head>
+      <title>ValetBike: Small Freedom with Two Wheels</title>
+</head>
+
+<body>
+
+<%# navigation bar%>
+<div class="navbar">
+  <div id="home"><%= link_to('Home', root_path, class: "active") %></div>
+  <%= link_to('About', about_path) %>
+  <%= link_to('Service', service_path)%>
+  <% if logged_in? %>
+    <%= link_to('Log Out', logout_path, class: "right") %>
+    <%= link_to('Profile', current_user, class: "right") %>
+    <% else %>
+    <%= link_to('Log in', sign_in_path, class: "right") %>
+    <%= link_to('Sign up', sign_up_path, class: "right") %>
+  <% end %>
+</div>
+
+<%# header and slogan %>
+<div class="header">
+  <h1>Ride With the Wind, Share Your Freedom</h1>
+</div>
+
+<div class="main">
+
+
+
+  <div class="flexbox vertical stretch">
+          <% if @stations.present? %>
+            <b><%= render(partial: "stations/row", object: @stations, as: :station) %></b>
+            <div class="scrolling-wrapper">
+            <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %></div>
+          <% else %>
+          <div class="empty">
+            No stations found.
+          </div>
+          <% end %>
+          </div>
+          </div>
+          

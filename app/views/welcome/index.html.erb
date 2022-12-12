@@ -82,10 +82,12 @@
             let latLng = new google.maps.LatLng(data[i].geometry.coordinates[0], data[i].geometry.coordinates[1]);
             
             let contentString=
-            '<div class="alert-info">'+
+            '<div class="station-list" style="background-color: #eee; align-item:center;">'+
+            '<div style="margin: 15px;">'+
+            '<br><h3><b>Station ID: '+ data[i].properties.identifier+
             '<br>Station: '+ data[i].properties.name+
-            '</br><br>Address: '+data[i].properties.address+
-            '</br><a href="/stations/identifier='+data[i].properties.identifier+'"> <h4>Click Here to Start Your Ride</h4></a>';      
+            '</b></h3><br><h4>Address: '+data[i].properties.address+
+            '</h4><br><br><button class="btn btn-info btn-lg" style="background-color: black; border-color:black; width:50%;"><a href="/stations/identifier='+data[i].properties.identifier+'" style="color: white;">Ride</a></button><br></div>';      
 
               let infowindow = new google.maps.InfoWindow({
                 content: contentString
