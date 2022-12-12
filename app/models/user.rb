@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   pay_customer
 
+  validates_presence_of   :stripe_customer_id
+
   #  pay_customer stripe_attributes: :stripe_attributes
   # pay_customer stripe_attributes: ->(pay_customer) { metadata: { { user_id: pay_customer.owner_id } } }
   # def stripe_attributes(pay_customer)
@@ -102,5 +104,10 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+
+    after_create do
+      customer = Stripe::Customer.create(email: self.email)
+      update(stripe_customer_id: customer.id)
+    end    
 
 end
