@@ -1,11 +1,4 @@
-<h1>Pay your membership now!</h1>
-
-<%# <%= render partial: 'pay/stripe/checkout_button',locals:{
-    # session: @checkout_session,
-    title: "Buy now"
-    
-}%> 
-
-<form action="/create-checkout-session-membership" method="POST">
-        <button type="submit" class="btn btn-primary" id="checkout-and-portal-button">Checkout</button>
-</form>
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
+publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ">
+</stripe-pricing-table>

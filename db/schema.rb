@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_190043) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_005036) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "in_use", default: false
   end
 
   create_table "pay_charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -100,39 +101,40 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_190043) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
+    t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "docked_bike_count"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "trip_id"
-    t.string "user_id"
-    t.integer "current_station_id"
-    t.integer "startTime"
-    t.integer "endTime"
+    t.string "user_id", null: false
+    t.integer "start_station_id", null: false
+    t.integer "end_station_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bike_id"
+    t.string "trip_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "password"
-    t.string "email"
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "email", null: false
+    t.string "trips"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.datetime "reset_sent_at", precision: nil
   end
 
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"

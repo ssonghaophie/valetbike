@@ -1,0 +1,22 @@
+<h1>Trip</h1>
+
+<%= form_for (:trip, url: trip_path, data: { turbo: false }) do |form| %> %>
+    <div>
+      <%= form.label :trip_id %><br>
+      <%= form.number_field :trip_id %>
+    </div>
+  
+    <div>
+      <%= form.label :start_station_id %><br>
+      <%= form.number_field  :start_station_id %>
+    </div>
+
+    <div>
+        <%= form.label :user_id %><br>
+        <%= form.number_field :user_id %>
+      </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+<% end %>

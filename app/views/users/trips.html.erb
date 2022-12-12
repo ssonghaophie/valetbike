@@ -1,34 +1,6 @@
 <h1>Trip</h1>
-
-<%= form_with model: @user do |form| %>
-    <div>
-      <%= form.label = "trip id" %><br>
-      <%= form.text_field = trip.id %>
-    </div>
-  
-    <div>
-      <%= form.label = "status" %><br>
-      <%= form.text_area = trip.status %>
-    </div>
-
-    <div>
-        <%= form.label = "from" %><br>
-        <%= form.text_area = trip.startStation %>
-    </div>
-
-    <div>
-        <%= form.label = "to" %><br>
-        <%= form.text_area = trip.endStation %>
-    </div>
-
-    <div>
-        <%= form.label = "date" %><br>
-        <%= form.text_area = trip.date %>
-    </div>
-
-    
-  
-    <div>
-      <%= form.submit %>
-    </div>
-<% end %>
+ <% if @trips.present? %>
+  <%= render(partial: "users/row", collection: @trips, as: :trip) %>
+<%else%>
+  No trip history.
+<%end%>

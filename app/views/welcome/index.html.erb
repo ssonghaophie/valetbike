@@ -15,6 +15,7 @@
   <% if logged_in? %>
     <%= link_to('Log Out', logout_path, class: "right") %>
     <%= link_to('Profile', current_user, class: "right") %>
+    <%= link_to('Return My Bike', mytrip_path , class: "right") %>
     <% else %>
     <%= link_to('Log in', sign_in_path, class: "right") %>
     <%= link_to('Sign up', sign_up_path, class: "right") %>
@@ -31,38 +32,32 @@
 </div>
 
 <div class="row">
-  <div class="side">
+  <div class="side" style="text-align: center">
     <h2>Start Riding</h2>
     <%# search bar for station %>
-    <form class="form-horizontal">
-      <div class="form-group">
+    <div class="form">
         <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
-        <div class="col-xs-4">
         <input type="text" id="from" placeholder="Origin" class="form-control">
-        </div>
-      </div>
-      <div class="form-group">
         <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
-        <div class="col-xs-4">
-          <input type="text" id="to" placeholder="Destination" class="form-control">
-        </div>
-      </div>
-    </form>
-    <div class="form-group">
-      <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i>Search</button>
+        <input type="text" id="to" placeholder="Destination" class="form-control">
+    </div>
+    <div class="form">
+      <button class="btn btn-info btn-lg" onclick="navigation();" style="background-color: black; border-color:black; width: 100%">Search</button>
     </div>
     <%# put station list here %>
-    <div class="station-list">
+    <div class="vertical-menu">
+        <%# <div class="fakeimg" style="height:60px;">Image</div><br>
         <div class="fakeimg" style="height:60px;">Image</div><br>
-        <div class="fakeimg" style="height:60px;">Image</div><br>
-        <div class="fakeimg" style="height:60px;">Image</div>
-    <%# <%= render(partial: "stations/row", collection: @stations, as: :station)%>
+        <div class="fakeimg" style="height:60px;">Image</div> %>
+        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
     </div>  
   </div>
 
   <div class="main">
     <%# map %>
+    <div class="main" id="output"></div>
     <div class="main map" id="map"></div>
+    
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTjL083Zn1BlzvCMq1xOv_M53aYGFIZU&libraries=places" ></script>
     <script src="/GeoJSON" type="application/json"></script>
@@ -80,6 +75,7 @@
         $("#home").click(function(){
           location.reload();
         })
+        getMyLocation();
         
         $.getJSON("/GeoJSON",function(data, status){   
           for (let i = 0; i < data.length; i++) {
@@ -99,6 +95,7 @@
                       map: map,
                     });
               marker.addListener("click", () => {
+                    map.setCenter(latLng);
                     infowindow.open({
                       anchor: marker,
                       map,
@@ -117,7 +114,6 @@
       //put DirectionsRenderer on the map
       directionsDisplay.setMap(map);
       
-
       //function for calculating the routes and displaying it on the map
       function navigation() {
           //create request
@@ -161,16 +157,17 @@
       var autocomplete2 = new google.maps.places.Autocomplete(input2);
      
       function getMyLocation(){
-         if (navigator.geolocation) {
+        var myInfoWindowmyInfoWindow = new google.maps.InfoWindow({
+                  content: "My current Loction"
+                });
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
               const pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
               };
 
-              const myInfowindow = new google.maps.InfoWindow({
-                  content: "My current Loction"
-                });
+               
               const myMarker = new google.maps.Marker({
                       position: pos,
                       map: map,
@@ -178,34 +175,32 @@
                     });
               myMarker.addListener("click", () => {
                     map.setCenter(pos);
-                    myInfowindow.open({
+                    myInfoWindow.open({
                       anchor: myMarker,
                       map,
                     });
             }); 
-            map.setCenter(myLocation);
+            map.setCenter(pos);
             }, () => {
-              handleLocationError(true, infoWindow, map.getCenter());
+              handleLocationError(true, myInfoWindow, map.getCenter());
             }
       );
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, myInfoWindow, map.getCenter());
     }
   }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
-}
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(
+        browserHasGeolocation
+          ? "Error: The Geolocation service failed."
+          : "Error: Your browser doesn't support geolocation."
+      );
+      infoWindow.open(map);
+    }
 
-    
-      getMyLocation();
 
    </script>
    

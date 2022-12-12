@@ -1,0 +1,27 @@
+<h1>Return</h1>
+<%if logged_in?%>
+    <%= form_for( @trip, data: { turbo: false } )do |f| %>
+        <div>
+        <%= f.label :trip_id %><br>
+        <%= f.text_field :trip_id , class: 'form-control' %>
+        </div>
+
+        <div>
+            <%= f.label :id %><br>
+            <%= f.number_field :user_id, class: 'form-control'  %>
+        </div>
+         <div>
+            <%= f.label :bike_id %><br>
+            <%= f.number_field :bike_id, class: 'form-control'  %>
+        </div>
+        <div>
+            <%= f.label :end_station_id %><br>
+            <%= f.number_field :end_station_id, class: 'form-control' %>
+        </div>
+        <div>
+        <%= f.submit "edit"%>
+        </div>
+    <% end %>
+<%else%>
+    <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
+<%end%>
