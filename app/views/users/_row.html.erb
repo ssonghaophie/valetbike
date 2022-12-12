@@ -16,8 +16,11 @@
     <%=trip.end_time%></br>
 
     <%if trip.end_time==nil%>
-    <div><%=link_to "Return Bike", edit_trip_path(trip)%> </div>
+        <div><%=link_to "Return Bike", edit_trip_path(trip)%> </div>
+        <div><%=link_to "Report Issue", review_path%> </div>
   
-<%end%>
+    <%end%>
+
+
 </div>
 

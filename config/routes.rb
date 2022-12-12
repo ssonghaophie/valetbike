@@ -37,8 +37,10 @@ Rails.application.routes.draw do
   match '/trips/:id',  to: 'trips#show', as: 'trip' , via: :get
   post 'trips', to: 'trips#create'
   get 'trips/:id/edit', to: 'trips#edit', as: 'edit_trip' 
-  patch 'trips/:id', to: 'trips#update' 
-
+  patch 'trips/:id', to: 'trips#update'
+  
+  get 'review',   to: 'reviews#new'
+  get 'review',   to: 'reviews#create'
   
   # authenticate :user, lambda { |u| u.admin? } do
   #   mount Sidekiq::Web => '/sidekiq'
@@ -57,7 +59,8 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  # resources :trips 
+  resources :trips 
+  resources :reviews
   resources :sessions,   only: [:new, :create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
