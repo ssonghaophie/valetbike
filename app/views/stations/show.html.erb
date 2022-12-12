@@ -30,13 +30,11 @@
 
 
 
-  <h2>current station</h2>
-  
-<h2><%= render(partial: "stations/row",object: @stations, as: :station) %></h2>
   <div class="flexbox vertical stretch">
           <% if @stations.present? %>
-            <%= render(partial: "stations/row", object: @stations, as: :station) %>
-            <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %>
+            <b><%= render(partial: "stations/row", object: @stations, as: :station) %></b>
+            <div class="scrolling-wrapper">
+            <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %></div>
           <% else %>
           <div class="empty">
             No stations found.

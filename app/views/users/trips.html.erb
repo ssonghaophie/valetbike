@@ -1,6 +1,64 @@
-<h1>Trip</h1>
- <% if @trips.present? %>
-  <%= render(partial: "users/row", collection: @trips, as: :trip) %>
-<%else%>
-  No trip history.
-<%end%>
+<!DOCTYPE html>
+<html>
+<%# link to css and bootstrap stylesheet %>
+<head>
+      <title>ValetBike: Small Freedom with Two Wheels</title>
+</head>
+
+<body>
+
+<%# navigation bar%>
+<div class="navbar">
+  <div id="home"><%= link_to('Home', root_path) %></div>
+  <%= link_to('About', about_path) %>
+  <%= link_to('Service', service_path)%>
+  <% if logged_in? %>
+    <%= link_to('Log Out', logout_path, class: "right") %>
+    <%= link_to('Profile', current_user, class: "right") %>
+    <% else %>
+    <%= link_to('Log in', sign_in_path, class: "right") %>
+    <%= link_to('Sign up', sign_up_path, class: "right") %>
+  <% end %>
+</div>
+
+<%# header and slogan %>
+<div class="header">
+  <h1>Ride With the Wind, Share Your Freedom</h1>
+</div>
+
+
+<div class="row">
+  <div class="side">
+    <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
+
+    <%# list %>
+    <div class="station-list">
+        <div class="fakeimg" style="height:60px;"><%= link_to('Account', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Billing', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Membership', membership_path) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('My Trip', mytrip_path ) %></div>
+    </div>  
+  </div>
+
+
+
+  <div class="main"> 
+  
+    <h1>Trip History</h1>
+    <% if @trips.present? %>
+      <%= render(partial: "users/row", collection: @trips, as: :trip) %>
+    <%else%>
+      No trip history.
+    <%end%>
+
+  
+  </div>
+
+
+
+
+
+
+
+
+
