@@ -1,6 +1,8 @@
 .vertical-menu {
-    width: 100%; /* Set a width if you like */
+    width: 90%; /* Set a width if you like */
     height: 300px;
+    margin-top: 50px;
+    margin-left: 20px;
     overflow-y: auto;
 }
   
@@ -13,11 +15,11 @@ text-decoration: none; /* Remove underline from links */
 }
 
 .vertical-menu a:hover {
-background-color: #ccc; /* Dark grey background on mouse-over */
+background-color: rgb(188, 140, 140); /* Dark grey background on mouse-over */
 }
 
 .vertical-menu a.active {
-background-color: #04AA6D; /* Add a green color to the "active/current" link */
+background-color: #a7c6e2; /* Add a green color to the "active/current" link */
 color: white;
 }
   
@@ -28,3 +30,8 @@ color: white;
     
 }
 
+.station-list {
+    display: block;
+    border: #eee;
+    border-bottom:  solid #bbb;
+}

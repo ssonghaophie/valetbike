@@ -2,42 +2,38 @@
 <html>
 <%# link to css and bootstrap stylesheet %>
 <head>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing Script">
       <title>ValetBike: Small Freedom with Two Wheels</title>
 </head>
 
-
 <body>
-  <div class=header_out></div>
-  <div class ="header">
-    <div class="inner_header">
-      <div class="logo_container">
-        <img class= "logo" src="assets/bike.png" alt="valet bike logo">
-        <a class="navbar_logo"><h1> <%= link_to('VALETBIKE', root_path, class: 'index-link') %></h1></a>
-      </div>
-      <ul class="navigation">
-        <%= link_to('About', about_path, class: 'index-link') %> 
-        <%= link_to('Service', service_path, class: 'index-link')  %>
 
-        <% if logged_in? %>
-          <%= link_to('Profile', current_user, class: 'index-link') %>
-          <%= link_to('Log Out', logout_path, class: 'index-link') %>
-          
-        <% else %>
-          <%= link_to('Log in', sign_in_path, class: 'index-link') %>
-          <%= link_to('Sign up', sign_up_path, class: 'index-link') %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+<%# navigation bar%>
+<div class="navbar">
+  <div id="home"><%= link_to('Home', root_path, class: "active") %></div>
+  <%= link_to('About', about_path) %>
+  <%= link_to('Service', service_path)%>
+  <% if logged_in? %>
+    <%= link_to('Log Out', logout_path, class: "right") %>
+    <%= link_to('Profile', current_user, class: "right") %>
+    <% else %>
+    <%= link_to('Log in', sign_in_path, class: "right") %>
+    <%= link_to('Sign up', sign_up_path, class: "right") %>
+  <% end %>
+</div>
 
+<%# header and slogan %>
+<div class="header">
+  <h1>Ride With the Wind, Share Your Freedom</h1>
+</div>
 
+<div class="main">
 
 
 
   <h2>current station</h2>
   
+<h2><%= render(partial: "stations/row",object: @stations, as: :station) %></h2>
+  <div class="flexbox vertical stretch">
           <% if @stations.present? %>
             <%= render(partial: "stations/row", object: @stations, as: :station) %>
             <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %>
@@ -46,5 +42,7 @@
             No stations found.
           </div>
           <% end %>
+          </div>
+          </div>
           
         
