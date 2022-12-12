@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   #get 'checkout/success', to: 'checkouts#success' 
   # match '/billing', to:'billing#show'
   
+  
+  # post 'billing_portal/create', to: 'billing_portal#create', as: 'billing_portal_create'
+
+  resources :billing_portal, only: [:create]
+
   match '/about', to: "welcome#about", via: :get
   match '/index', to: "welcome#index", via: :get
   match '/service', to: "welcome#service", via: :get
