@@ -20,25 +20,24 @@ class CheckoutsController < ApplicationController
 
       
     def show
-      # if logged_in?
-      #   @bike = Bike.find(params[:id])
-      #   @bike.in_use=true
-      #   # @bike.current_station_id=0
-      #   @bike.save
-      #   @trip = Trip.new()
-      #   @trip.trip_id=SecureRandom.base64(4).gsub("/","_").gsub(/=+$/,"")
-      #   @trip.user_id=current_user.id
-      #   @trip.bike_id= @bike.identifier
-      #   @trip.start_station_id= @bike.current_station_id
-      #   @trip.start_time =  Time.now
+      if logged_in?
+        @bike = Bike.find(params[:id])
+        @bike.in_use=true
+        @bike.save
+        @trip = Trip.new()
+        @trip.trip_id=SecureRandom.base64(4).gsub("/","_").gsub(/=+$/,"")
+        @trip.user_id=current_user.id
+        @trip.bike_id= @bike.identifier
+        @trip.start_station_id= @bike.current_station_id
+        @trip.start_time =  Time.now
         
-      #   if @trip.save
-      #     redirect_to root_path
-      #   end
-      # else
-      #   flash[:warning]= "Please log in first."
-      #   redirect_to sign_in_path
-      # end
+        if @trip.save
+          redirect_to root_path
+        end
+      else
+        flash[:warning]= "Please log in first."
+        redirect_to sign_in_path
+      end
 
     end
 

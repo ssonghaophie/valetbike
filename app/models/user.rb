@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   pay_customer
 
-  validates_uniqueness_of  :email
-
   # validates_presence_of   :stripe_customer_id
 
   #  pay_customer stripe_attributes: :stripe_attributes
@@ -114,5 +112,12 @@ class User < ApplicationRecord
       self.activation_digest = User.digest(activation_token)
     end
   
+    after_create do
+      
+      customer = Stripe::Customer.create(email: self.email)
+      update(stripe_customer_id: customer.id)
+    end    
 
 end
+
+Stripe.api_key = 'sk_test_51MA2XxLFQu7F5KVbzeELWoGQJseEpJVj7iwsWWhquXTWdFenPsCJFcoCmUkKoDNMj6mFfHOpHv4bBiHXUtnYMRv9007TQg6Smz'
