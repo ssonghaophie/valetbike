@@ -43,18 +43,41 @@
     </div>  
   </div>
 
-  
+
 
   <div class="main"> 
-    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-    <stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
-    publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ"
-    client-reference-id ="<%= current_user.stripe_customer_id %>">
-    </stripe-pricing-table>
-  </div>
+<<<<<<< HEAD
+    
 
+    <form action="/">
+    <button  onClick="showMonthlyPayment()"  class="pill-button">  <%= link_to('One-month Membership', 'membership#success') %>  </button>
+      <button  onClick="showYearlyPayment()"  class="pill-button">  <%= link_to('One-year Membership', 'membership#success') %>  </button>
+
+    <script type="text/javascript">
+            function showMonthlyPayment() {
+                const expiration = new Date();
+                expiration.setMonth(expiration.getMonth() + 1);
+                alert("Success! Your membership will end at " + expiration + ".");
+          
+
+            }
+            function showYearlyPayment() {
+                const expiration = new Date();
+                expiration.setFullYear(expiration.getFullYear() + 1);
+                alert("Success! Your membership will end at " + expiration + ".");
+
+            }
+
+     </script>
+
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
+publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ"
+client-reference-id ="<%= current_user.stripe_customer_id %>">
+</stripe-pricing-table>
+ 
   
-
+ </div>
 
 </body>
 

@@ -11,6 +11,7 @@ class CheckoutsController < ApplicationController
             quantity: 1,
         }],
         mode: 'payment',
+        # customer: current_user.stripe_customer_id,
         success_url: YOUR_DOMAIN + '/success.html.erb',
         cancel_url: YOUR_DOMAIN + '/cancel.html.erb',
         })
