@@ -32,7 +32,7 @@
   <div class="row">
   <div class="side">
 
- <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
+ `<h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
 
     <%# list %>
     <div class="station-list">
@@ -43,19 +43,16 @@
     </div>  
   </div>
 
-
+  
 
   <div class="main"> 
-    
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+    <stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
+    publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ"
+    client-reference-id ="<%= current_user.stripe_customer_id %>">
+    </stripe-pricing-table>
+  </div>
 
-
-    
-
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-<stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
-publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ"
-client-reference-id ="<%= current_user.stripe_customer_id %>">
-</stripe-pricing-table>
   
 
 
