@@ -11,12 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
-  create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "bikes", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "in_use", default: false
     t.integer "identifier"
     t.integer "current_station_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "in_use", default: false
   end
 
   create_table "pay_charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -109,9 +107,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
-    t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "docked_bike_count"
     t.float "latitude"
     t.float "longitude"
   end
@@ -125,7 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.string "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bike_id", unsigned: true
+    t.integer "bike_id"
     t.string "trip_id"
   end
 
@@ -133,22 +131,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "email", null: false
-    t.string "trips"
+    t.string "password"
+    t.string "email"
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at", precision: nil
+    t.datetime "reset_sent_at"
     t.string "stripe_customer_id"
-    t.string "plan"
-    t.string "session_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "subscription_status", default: "incomplete"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id"
   end
 
+  add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
+  add_foreign_key "pay_charges", "pay_subscriptions", column: "subscription_id"
+  add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
+  add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
 end
