@@ -6,17 +6,14 @@
         <%= f.text_field :trip_id , class: 'form-control' %>
         </div>
 
-        <div>
-            <%= f.label :id %><br>
-            <%= f.number_field :user_id, class: 'form-control'  %>
-        </div>
          <div>
             <%= f.label :bike_id %><br>
             <%= f.number_field :bike_id, class: 'form-control'  %>
         </div>
         <div>
-            <%= f.label :end_station_id %><br>
-            <%= f.number_field :end_station_id, class: 'form-control' %>
+            <%= f.label :end_station %><br>
+            <%= f.select :end_station_id, Station.all.collect { |s| [ s.identifier.to_s()+" "+ s.name ]  }, include_blank: false %>
+		
         </div>
         <div>
         <%= f.submit "edit"%>
@@ -55,20 +52,52 @@
   <h1>Ride With the Wind, Share Your Freedom</h1>
 </div>
 
-<div class="main">
 
+<div class="row">
+  <div class="side">
+    <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
 
-
-  <div class="flexbox vertical stretch">
-          <% if @stations.present? %>
-            <b><%= render(partial: "stations/row", object: @stations, as: :station) %></b>
-            <div class="scrolling-wrapper">
-            <%= render(partial: "stations/bikerows",collection: @bikes, as: :bike) %></div>
-          <% else %>
-          <div class="empty">
-            No stations found.
-          </div>
-          <% end %>
-          </div>
-          </div>
+    <%# list %>
+    <div class="station-list">
+        <div class="fakeimg" style="height:60px;"><%= link_to('Account', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Billing', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Membership', membership_path) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('My Trip', mytrip_path ) %></div>
+    </div>  
+  </div>
           
+  <div class="main">
+    
+    <div class= "main" style="margin-right: 10px;">
+    <div class="form" style="width: 50%;">
+    <%if logged_in?%>
+        <h1 style="text-align: center;">Return</h1>
+        <%= form_for( @trip, data: { turbo: false } )do |f| %>
+            <div>
+            <%= f.label :trip_id %><br>
+            <%= f.text_field :trip_id , class: 'form-control' %>
+            </div>
+
+            <div>
+                <%= f.label :id %><br>
+                <%= f.number_field :user_id, class: 'form-control'  %>
+            </div>
+            <div>
+                <%= f.label :bike_id %><br>
+                <%= f.number_field :bike_id, class: 'form-control'  %>
+            </div>
+            <div>
+                <%= f.label :end_station_id %><br>
+                <%= f.number_field :end_station_id, class: 'form-control' %>
+            </div>
+            <button class="btn btn-info btn-lg" style="background-color: black; border-color:black; width: 100%; text-align: auto;">
+            <%= f.submit "EDIT"%>
+            </button>
+        <% end %>
+    <%else%>
+        <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
+    <%end%>
+    </div>
+    </div>
+  </div>
+</div>
