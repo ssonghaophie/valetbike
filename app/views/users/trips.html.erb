@@ -42,15 +42,14 @@
 
 
 
-  <div class="main"> 
-  
+  <div class="main" > 
+    
+    <div class="vertical-menu" style="height: 500px; width: 70%; text-align: center; margin-left: 150px;">
     <h1>Trip History</h1>
-    <div class="vertical-menu" style="height: 500px;">
+     <div class="vertical-menu" style="height: 500px;">
     <% if @trips.present? %>
-      <%= render(partial: "users/row", collection: @trips, as: :trip) %>
-    <%else%>
-      No trip history.
-    <%end%>
+        <%= render(partial: "users/row", collection: @trips, as: :trip) %>
+      <%end%>
     </div>
 
   

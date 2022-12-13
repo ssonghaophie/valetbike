@@ -49,6 +49,11 @@
       <%= current_user.stripe_customer_id %>
       <br>
 
+      <form action="/billing_portal" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <button>Manage Billing</button>
+      </form>
+
 
         <span class="title">Account Information</span>
           <p><%=link_to "Edit", edit_user_path, class: 'btn btn-info btn-lg' %></p>

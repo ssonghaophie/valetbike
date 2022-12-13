@@ -1,26 +1,28 @@
 <div class="flexbox vertical stretch">
 <div style="background-color: white; margin-right: 20px;">
 <div class="station-list">
-<br>start_station_id:
+<br><b>start_station_id:</b>
     <%=trip.start_station_id%></br>
-    <br>end_station_id:
+    <br><b>end_station_id:</b>
     <%=trip.end_station_id%></br>
-    <br>
-    trip id:
+    <br><b>
+    trip id:</b>
     <%=trip.trip_id%></br>
-    <br>
-    bike id:
+    <br><b>
+    bike id:</b>
     <%=trip.bike_id%></br>
-    <br>
-    start time:
+    <br><b>
+    start time:</b>
     <%=trip.start_time%></br>
-    <br>end time:
+    <br><b>end time:</b>
     <%=trip.end_time%></br>
-
+<br>
     <%if trip.end_time==nil%>
         <div><%=link_to "Return Bike", edit_trip_path(trip)%> </div>
         <div><%=link_to "Report Issue", review_path%> </div>
-  
+   <%else%>
+          <a href="https://buy.stripe.com/test_3csbJBb2o3hdbVmbII">Checkout</a >
+          <div><%=link_to "Feedback", review_path%> </div>
     <%end%>
 
 

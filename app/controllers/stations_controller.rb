@@ -6,7 +6,7 @@ class StationsController < ApplicationController
   end
 
   def show
-    @stations = Station.find_by(params[:identifier])
+    @stations = Station.find_by(identifier: params[:identifier])
     @bikes = Bike.where(current_station_id: @stations.identifier)
     
   end
