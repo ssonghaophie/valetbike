@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   pay_customer
-  Stripe.api_key = 'sk_test_51M2nVEAUWd5BoaTvArJWvqQ4qi3HQ1hNekOT9x3jI6Tc7RFCnpgaKlEDN1laIB6nToh9rZbHX3GUl6yB43APQ6Xd007vdPIAGj'
-  
+
   # validates_presence_of   :stripe_customer_id
 
   #  pay_customer stripe_attributes: :stripe_attributes
@@ -120,3 +119,5 @@ class User < ApplicationRecord
     end    
 
 end
+
+Stripe.api_key = 'sk_test_51MA2XxLFQu7F5KVbzeELWoGQJseEpJVj7iwsWWhquXTWdFenPsCJFcoCmUkKoDNMj6mFfHOpHv4bBiHXUtnYMRv9007TQg6Smz'

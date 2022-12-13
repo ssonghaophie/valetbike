@@ -95,3 +95,9 @@ color: white;
     color:#aaa;
     margin-bottom:0;
   }
+
+  .btn btn-info btn-lg {
+    background-color: black; 
+    border-color:black; 
+    width: 100%;
+  }
