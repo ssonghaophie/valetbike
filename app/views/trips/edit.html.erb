@@ -1,27 +1,4 @@
-<h1>Return</h1>
-<%if logged_in?%>
-    <%= form_for( @trip, data: { turbo: false } )do |f| %>
-        <div>
-        <%= f.label :trip_id %><br>
-        <%= f.text_field :trip_id , class: 'form-control' %>
-        </div>
 
-         <div>
-            <%= f.label :bike_id %><br>
-            <%= f.number_field :bike_id, class: 'form-control'  %>
-        </div>
-        <div>
-            <%= f.label :end_station %><br>
-            <%= f.select :end_station_id, Station.all.collect { |s| [ s.identifier.to_s()+" "+ s.name ]  }, include_blank: false %>
-		
-        </div>
-        <div>
-        <%= f.submit "edit"%>
-        </div>
-    <% end %>
-<%else%>
-    <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
-<%end%>
 
 
 <!DOCTYPE html>
@@ -70,33 +47,23 @@
     
     <div class= "main" style="margin-right: 10px;">
     <div class="form" style="width: 50%;">
-    <%if logged_in?%>
-        <h1 style="text-align: center;">Return</h1>
-        <%= form_for( @trip, data: { turbo: false } )do |f| %>
-            <div>
-            <%= f.label :trip_id %><br>
-            <%= f.text_field :trip_id , class: 'form-control' %>
-            </div>
-
-            <div>
-                <%= f.label :id %><br>
-                <%= f.number_field :user_id, class: 'form-control'  %>
-            </div>
-            <div>
-                <%= f.label :bike_id %><br>
-                <%= f.number_field :bike_id, class: 'form-control'  %>
-            </div>
-            <div>
-                <%= f.label :end_station_id %><br>
-                <%= f.number_field :end_station_id, class: 'form-control' %>
-            </div>
-            <button class="btn btn-info btn-lg" style="background-color: black; border-color:black; width: 100%; text-align: auto;">
-            <%= f.submit "EDIT"%>
-            </button>
-        <% end %>
-    <%else%>
-        <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
-    <%end%>
+      <%if logged_in?%>
+          <h1 style="text-align: center;">Return</h1>
+          <%= form_for( @trip, data: { turbo: false } )do |f| %>
+              <div>
+              <%= f.label :trip_id %><br>
+              <%= f.text_field :trip_id , class: 'form-control' %>
+              <%= f.label :bike_id %><br>
+              <%= f.number_field :bike_id, class: 'form-control'  %>
+              <%= f.label :end_station_id %><br>
+              <%= f.select :end_station_id, Station.all.collect { |s| [ s.identifier.to_s()+" "+ s.name ]  }, { :class => 'form', :style => 'width: 50%;'} ,include_blank: false %>
+              <button class="btn btn-info btn-lg" style="background-color: black; border-color:black; width: 100%; text-align: auto;">
+              <%= f.submit "EDIT"%>
+              </button></div>
+          <% end %>
+      <%else%>
+          <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
+      <%end%>
     </div>
     </div>
   </div>
