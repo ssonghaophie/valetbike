@@ -9,18 +9,16 @@ class MembershipController < ApplicationController
 
         
     def create
-        # post '/create-checkout-session-membership' do
-        #     prices = Stripe::Price.list(
-        #       lookup_keys: [params['lookup_key']],
-        #       expand: ['data.product']
-        #     )
-    
-        @session = Stripe::Checkout::Session.create({
+      customer = Stripe::Customer.create()
+      update(stripe_customer_id: customer.id)
+        session = Stripe::Checkout::Session.create({
           mode: 'subscription',
           line_items: [{
             quantity: 1,
             price: 'price_1M6R3dAUWd5BoaTv4yxMB6Ks'
           }],
+          customer: current_user.stripe_customer_id, 
+          payment_method_types: ['card'],
           success_url: YOUR_DOMAIN + '/success.html?session_id={CHECKOUT_SESSION_ID}',
           cancel_url: YOUR_DOMAIN + '/cancel.html',
         })
@@ -29,7 +27,7 @@ class MembershipController < ApplicationController
             { 'Content-Type' => 'application/json' },
             { 'error': { message: e.error.message } }.to_json
         
-        redirect_to @session.url, 303
+        redirect_to session.url, 303
     end
         # redirect_to @session.url, allow_other_host: true
   

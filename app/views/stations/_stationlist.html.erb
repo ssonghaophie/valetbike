@@ -1,12 +1,13 @@
 
 <div class="station-list">
-<a><b>Station ID: <%= station.identifier %><br>
-<%= station.name %></b><br>
-Address: <%= station.address %>
-</a>
+        
+        <div style="background-color: #eee;"><br><b>Station ID: <%= station.identifier %><br><%= station.name %></b><br>
+        Address: <%= station.address %><br></div>
+
+        <%= link_to("Ride",station_path(station.identifier))%>
+     
 </div>
 
-<script></script>
 
 
 

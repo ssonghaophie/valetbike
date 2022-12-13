@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   pay_customer
+  Stripe.api_key = 'sk_test_51M2nVEAUWd5BoaTvArJWvqQ4qi3HQ1hNekOT9x3jI6Tc7RFCnpgaKlEDN1laIB6nToh9rZbHX3GUl6yB43APQ6Xd007vdPIAGj'
+  
+  # validates_presence_of   :stripe_customer_id
 
   #  pay_customer stripe_attributes: :stripe_attributes
   # pay_customer stripe_attributes: ->(pay_customer) { metadata: { { user_id: pay_customer.owner_id } } }
@@ -102,5 +105,11 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+  
+    after_create do
+      
+      customer = Stripe::Customer.create(email: self.email)
+      update(stripe_customer_id: customer.id)
+    end    
 
 end

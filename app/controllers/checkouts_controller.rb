@@ -13,6 +13,7 @@ class CheckoutsController < ApplicationController
             quantity: 1,
         }],
         mode: 'payment',
+        customer: current_user.stripe_customer_id,
         success_url: YOUR_DOMAIN + '/success.html.erb',
         cancel_url: YOUR_DOMAIN + '/cancel.html.erb',
         })
@@ -25,7 +26,6 @@ class CheckoutsController < ApplicationController
       if logged_in?
         @bike = Bike.find(params[:id])
         @bike.in_use=true
-        # @bike.current_station_id=0
         @bike.save
         @trip = Trip.new()
         @trip.trip_id=SecureRandom.base64(4).gsub("/","_").gsub(/=+$/,"")

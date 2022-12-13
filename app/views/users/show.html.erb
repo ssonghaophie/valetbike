@@ -44,7 +44,11 @@
 
 
   <div class="main"> 
-  
+    <br>
+      Stripe customer id:
+      <%= current_user.stripe_customer_id %>
+      <br>
+      
     <form action="/billing_portal" method="POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <button>Manage Billing</button>
