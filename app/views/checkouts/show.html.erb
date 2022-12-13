@@ -5,18 +5,7 @@
     title: "Buy now"
     
 }%> 
-Bike: <%= @bike.identifier%>
- <% if logged_in? %>
+
 <form action="/create-checkout-session" method="POST">
         <button type="submit" class="btn btn-primary" id="checkout-button">Checkout</button>
 </form>
-        <div id="start"><%=link_to "My Trip", mytrip_path%></div>
-        <%= @bike.in_use %>
-        <%= current_user.id %>
-    <%if @bike.in_use == true %>
-        <div id="return"><%=link_to "Return", current_user%></div>
-    <%end%>
-<%else%>
-   <div>Please <%=link_to "sign in", sign_in_path%> to pay</div>
-<%end%>
-

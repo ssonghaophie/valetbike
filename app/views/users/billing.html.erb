@@ -43,9 +43,9 @@
 
 
   <div class="main"> 
-        <form method="POST" action="/create-customer-portal-session">
-          <button type="submit">Manage billing</button>
-        </form>
+        <%= link_to "BillingPortal", billing_portal_create_path, method: :post %>
+        <p>List all invoice</p>
+        
         <th>Subscribe new Membership</th>
         <td><%= link_to('Membership', membership_path ) %></td>
         </tr>

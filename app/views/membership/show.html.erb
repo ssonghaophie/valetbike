@@ -1,4 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<%# link to css and bootstrap stylesheet %>
+<head>
+      <%# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> %>
+      <title>ValetBike: Small Freedom with Two Wheels</title>
+</head>
+
+<body>
+
+  <%# navigation bar%>
+  <div class="navbar">
+    <%= link_to('Home', root_path) %>
+    <%= link_to('About', about_path) %>
+    <%= link_to('Service', service_path)%>
+    <% if logged_in? %>
+      <%= link_to('Log Out', logout_path, class: "right") %>
+      <%= link_to('Profile', current_user, class: "right") %>
+      <% else %>
+      <%= link_to('Log in', sign_in_path, class: "right") %>
+      <%= link_to('Sign up', sign_up_path, class: "right") %>
+    <% end %>
+  </div>
+
+  <%# header and slogan %>
+  <div class=header_out></div>
+  <div class="header">
+    <h1>Ride With the Wind, Share Your Freedom</h1>
+  </div>
+
+  <div class="row">
+  <div class="side">
+
+ <h2><%= current_user.first_name%> <%= current_user.last_name%></h2>
+
+    <%# list %>
+    <div class="station-list">
+        <div class="fakeimg" style="height:60px;"><%= link_to('Account', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Billing', current_user) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('Membership', membership_path) %></div><br>
+        <div class="fakeimg" style="height:60px;"><%= link_to('My Trip', mytrip_path ) %></div>
+    </div>  
+  </div>
+
+
+
+  <div class="main"> 
+    
+
+
+    
+
 <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 <stripe-pricing-table pricing-table-id="prctbl_1MDg2VLFQu7F5KVbZPZcuvmn"
-publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ">
+publishable-key="pk_test_51MA2XxLFQu7F5KVbUUT8HQHDbMbgfJsSaqb7QLQ7gOLY33S9HMp14v5C3oM977wz8im80V3wydrGUQAu4w4GcGjM001LEIYVEJ"
+client-reference-id ="<%= current_user.stripe_customer_id %>">
 </stripe-pricing-table>
+  
+
+
+</body>
+
+</html>
+
+
