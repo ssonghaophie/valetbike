@@ -39,10 +39,8 @@ class TripsController < ApplicationController
       @trip = Trip.find(params[:id])
       @trip.end_time=Time.now()
       @trip.end_station_id = :end_station_id
-      @bike=Bike.find_by(identifier: @trip.bike_id)
-      @bike.current_station_id=:end_station_id
-      @bike.in_use=false
-      if @trip.update(trip_params)
+      @bike = Bike.find_by(identifier: @trip.bike_id)
+      if @trip.update(trip_params)&& @bike.update(current_station_id: @trip.end_station_id, in_use:false)
         flash[:success] = "Bike returned successfully"
         redirect_to root_path
       end
@@ -72,6 +70,8 @@ class TripsController < ApplicationController
       :end_station_id
     )
   end
+
+
   end
   
 

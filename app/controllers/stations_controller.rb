@@ -20,7 +20,6 @@ class StationsController < ApplicationController
         "properties": {
             "name": station.name ,
             "address": station.address,
-            # "available_bikes": Bike.find_by[params[:current_station_id]],
             "identifier": station.identifier
         },
         "geometry": {
