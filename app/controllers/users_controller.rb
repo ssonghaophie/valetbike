@@ -61,6 +61,10 @@ class UsersController < ApplicationController
     @trips = Trip.where(user_id: current_user.id)
   end
 
+  def create_membership
+    @user.membership_status = true
+  end
+  
   # def create_customer_portal
   #   Stripe.api_key = 'sk_test_51MA2XxLFQu7F5KVbzeELWoGQJseEpJVj7iwsWWhquXTWdFenPsCJFcoCmUkKoDNMj6mFfHOpHv4bBiHXUtnYMRv9007TQg6Smz'
 

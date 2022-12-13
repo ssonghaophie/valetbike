@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_024136) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
@@ -109,11 +109,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
-    t.integer "docked_bike_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
+    t.integer "docked_bike_count"
     t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -125,7 +125,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.string "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bike_id", unsigned: true
+    t.integer "bike_id"
     t.string "trip_id"
   end
 
@@ -135,6 +135,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_053441) do
     t.string "username"
     t.string "email", null: false
     t.string "trips"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
