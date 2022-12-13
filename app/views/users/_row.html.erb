@@ -20,7 +20,9 @@
     <%if trip.end_time==nil%>
         <div><%=link_to "Return Bike", edit_trip_path(trip)%> </div>
         <div><%=link_to "Report Issue", review_path%> </div>
-  
+   <%else%>
+          <a href="https://buy.stripe.com/test_3csbJBb2o3hdbVmbII">Checkout</a >
+          <div><%=link_to "Feedback", review_path%> </div>
     <%end%>
 
 
